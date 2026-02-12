@@ -1,15 +1,15 @@
 /* CTRL + K > CTRL + C = Comenta */
 /* CTRL + K > CTRL + U = Tira o comentário */
 
-USE master;
-GO
+-- USE master;
+-- GO
 
-IF DB_ID('VH_Burguer') IS NOT NULL
-    DROP DATABASE VH_Burguer
-GO
+-- IF DB_ID('VH_Burguer') IS NOT NULL
+--	DROP DATABASE VH_Burguer
+-- GO
 
-CREATE DATABASE VH_Burguer
-GO
+-- CREATE DATABASE VH_Burguer
+-- GO
 
 USE VH_Burguer
 GO

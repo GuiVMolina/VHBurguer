@@ -48,7 +48,7 @@ namespace VHBurguer.Applications.Services
 
         private static void ValidarEmail(string email)
         {
-            if(string.IsNullOrEmpty(email) || !email.Contains("@"))
+            if (string.IsNullOrEmpty(email) || !email.Contains("@"))
             {
                 throw new DomainException("Email inválido.");
             }
@@ -66,11 +66,87 @@ namespace VHBurguer.Applications.Services
             return sha256.ComputeHash(Encoding.UTF8.GetBytes(senha));
         }
 
-        public LerUsuarioDto ObterPorId(int id)
+        public LerUsuarioDto Adicionar(CriarUsuarioDto usuarioDto)
+        {
+            ValidarEmail(usuarioDto.Email);
+
+            if (_repository.EmailExiste(usuarioDto.Email))
+            {
+                throw new DomainException("Já existe um usuário com este e-mail.");
+            }
+
+            Usuario usuario = new Usuario
+            {
+                Nome = usuarioDto.Nome,
+                Email = usuarioDto.Email,
+                Senha = HashSenha(usuarioDto.Senha),
+                StatusUsuario = true
+            };
+
+            _repository.Adicionar(usuario);
+
+            // Retorna o LerDto para não retornar o objeto com a senha
+            return LerDto(usuario);
+        }
+
+        public LerUsuarioDto Atualizar(int id, CriarUsuarioDto usuarioDto)
+        {
+            Usuario usuarioBanco = _repository.ObterPorID(id);
+
+            if (usuarioBanco == null)
+            {
+                throw new DomainException("Usuário não encontrado.");
+            }
+
+            ValidarEmail(usuarioDto.Email);
+
+            Usuario usuarioComMesmoEmail = _repository.ObterPorEmail(usuarioDto.Email);
+
+            if (usuarioComMesmoEmail != null && usuarioComMesmoEmail.UsuarioID != id)
+            {
+                throw new DomainException("Já existe um usuário com este e-mail.");
+            }
+
+            // Substitui as informações do usuarioBanco (usuarioBanco)
+            // Inserindo as alterações que estão vindo de usuárioDto
+            usuarioBanco.Nome = usuarioDto.Nome;
+            usuarioBanco.Email = usuarioDto.Email;
+            usuarioBanco.Senha = HashSenha(usuarioDto.Senha);
+
+            _repository.Atualizar(usuarioBanco);
+
+            return LerDto(usuarioBanco);
+        }
+
+        public void Remover(int id)
         {
             Usuario usuario = _repository.ObterPorID(id);
 
             if(usuario == null)
+            {
+                throw new DomainException("Usuário não encontrado.");
+            }
+
+            _repository.Remover(id);
+        }
+        public LerUsuarioDto ObterPorID(int id)
+        {
+            Usuario? usuario = _repository.ObterPorID(id);
+
+            if (usuario == null)
+            {
+                throw new Exception("Usuário não existe.");
+            }
+
+            // Se existe usuário, converte para Dto e devolve usuário
+            return LerDto(usuario);
+        }
+
+        public LerUsuarioDto ObterPorEmail(string email)
+        {
+            Usuario? usuario = _repository.ObterPorEmail(email);
+
+            if (usuario == null)
             {
                 throw new Exception("Usuário não existe.");
             }
