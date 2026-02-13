@@ -12,7 +12,7 @@ public partial class Produto
 
     public byte[] Imagem { get; set; } = null!;
 
-    public bool StatusProduto { get; set; }
+    public bool? StatusProduto { get; set; }
 
     public int? FK_UsuarioID { get; set; }
 
