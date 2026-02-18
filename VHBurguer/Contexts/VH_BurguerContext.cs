@@ -5,14 +5,10 @@ namespace VHBurguer.Contexts;
 
 public partial class VH_BurguerContext : DbContext
 {
-    public VH_BurguerContext()
-    {
-    }
+    public VH_BurguerContext() { }
 
     public VH_BurguerContext(DbContextOptions<VH_BurguerContext> options)
-        : base(options)
-    {
-    }
+        : base(options) { }
 
     public virtual DbSet<Categoria> Categoria { get; set; }
 

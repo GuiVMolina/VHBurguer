@@ -10,7 +10,7 @@ namespace VHBurguer.DTOs.ProdutoDto
 
         public string Descricao { get; set; } = null!;
 
-        public bool? StatusUsuario { get; set; }
+        public bool? StatusProduto { get; set; }
 
         // Categorias
         public List<int> CategoriaIds { get; set; } = new();
