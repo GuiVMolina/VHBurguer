@@ -51,7 +51,7 @@ namespace VHBurguer.Applications.Services
 
             if (produtoDto.Preco < 0)
             {
-                throw new DomainException("Preço deve ser maior ou igual a 0");
+                throw new DomainException("Preço deve ser maior ou igual a 0.");
             }
 
             if (string.IsNullOrWhiteSpace(produtoDto.Descricao))
@@ -76,7 +76,7 @@ namespace VHBurguer.Applications.Services
 
             if (imagem == null || imagem.Length == 0)
             {
-                throw new DomainException("Imagem não encontrado.");
+                throw new DomainException("Imagem não encontrada.");
             }
 
             return imagem;
@@ -130,7 +130,7 @@ namespace VHBurguer.Applications.Services
 
             if (produtoDto.Preco < 0)
             {
-                throw new DomainException("Preço deve ser maior ou igual a 0");
+                throw new DomainException("Preço deve ser maior ou igual a 0.");
             }
 
             produtoBanco.Nome = produtoDto.Nome;
