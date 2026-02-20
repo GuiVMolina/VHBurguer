@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using VHBurguer.Applications.Services;
 using VHBurguer.DTOs.ProdutoDto;
@@ -74,6 +76,64 @@ namespace VHBurguer.Controllers
             {
                 // NotFound - Não encontrado
                 return NotFound(ex.Message);
+            }
+        }
+
+        [HttpPost]
+
+        // Indica que recebe no formato multipart/form-data
+        // É necessário quando enviamos arquivos
+        [Consumes("multipart/form-data")]
+
+        // Exige login para adicionar produtos
+        [Authorize]
+        
+        // [FromForm] - Diz que os dados vem da requisição (multipart/form-data)
+        public ActionResult Adicionar([FromForm] CriarProdutoDto produtoDto) {
+            try
+            {
+                int usuarioId = ObterUsuarioIdLogado();
+
+                // Cadastro fica associado ao usuário logado
+                _service.Adicionar(produtoDto, usuarioId);
+
+                return StatusCode(201); // Created
+            }
+            catch (DomainException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        [Consumes("multipart/form-data")]
+        [Authorize]
+        public ActionResult Atualizar(int id, [FromForm] AtualizarProdutoDto produtoDto)
+        {
+            try
+            {
+               _service.Atualizar(id, produtoDto);
+
+                return NoContent();
+            }
+            catch (DomainException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        [Authorize]
+        public ActionResult Remover(int id) {
+            try
+            {
+                _service.Remover(id);
+
+                return NoContent();
+            }
+            catch (DomainException ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }

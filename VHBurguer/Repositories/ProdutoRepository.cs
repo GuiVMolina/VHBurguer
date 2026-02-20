@@ -18,11 +18,11 @@ namespace VHBurguer.Repositories
         {
             List<Produto> produtos = _context.Produto
 
-            // Busca produtos, para cada produto traz as suas categorias
+                // Busca produtos, para cada produto traz as suas categorias
                 .Include(produto => produto.Categoria)
 
                 // Busca produtos, para cada produto traz as seus usuários
-                .Include(produto => produto.FK_UsuarioID)
+                .Include(produto => produto.FK_Usuario)
                 .ToList();
 
             return produtos;
