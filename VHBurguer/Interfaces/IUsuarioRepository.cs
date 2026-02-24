@@ -6,7 +6,7 @@ namespace VHBurguer.Interfaces
     {
         List<Usuario> Listar();
 
-        Usuario? ObterPorID(int id);
+        Usuario? ObterPorId(int id);
 
         Usuario? ObterPorEmail(string email);
 

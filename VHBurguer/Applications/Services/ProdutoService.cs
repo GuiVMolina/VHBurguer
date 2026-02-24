@@ -29,9 +29,9 @@ namespace VHBurguer.Applications.Services
             return produtosDto;
         }
 
-        public LerProdutoDto ObterPorID(int id)
+        public LerProdutoDto ObterPorId(int id)
         {
-            Produto produto = _repository.ObterPorID(id);
+            Produto produto = _repository.ObterPorId(id);
 
             if (produto == null)
             {
@@ -110,7 +110,7 @@ namespace VHBurguer.Applications.Services
         {
             HorarioAlterecaoProduto.ValidarHorario();
 
-            Produto produtoBanco = _repository.ObterPorID(id);
+            Produto produtoBanco = _repository.ObterPorId(id);
 
             if (produtoBanco == null)
             {
@@ -156,7 +156,7 @@ namespace VHBurguer.Applications.Services
         {
             HorarioAlterecaoProduto.ValidarHorario();
 
-            Produto produto = _repository.ObterPorID(id);
+            Produto produto = _repository.ObterPorId(id);
 
             if (produto == null)
             {

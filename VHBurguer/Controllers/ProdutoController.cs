@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using VHBurguer.Applications.Services;
@@ -47,9 +46,9 @@ namespace VHBurguer.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<LerProdutoDto> ObterPorID(int id)
+        public ActionResult<LerProdutoDto> ObterPorId(int id)
         {
-            LerProdutoDto produto = _service.ObterPorID(id);
+            LerProdutoDto produto = _service.ObterPorId(id);
 
             if (produto == null)
             {

@@ -6,7 +6,7 @@ namespace VHBurguer.Interfaces
     {
         List<Produto> Listar();
 
-        Produto ObterPorID(int id);
+        Produto ObterPorId(int id);
 
         byte[] ObterImagem(int id);
 

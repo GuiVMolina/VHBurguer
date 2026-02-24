@@ -91,7 +91,7 @@ namespace VHBurguer.Applications.Services
 
         public LerUsuarioDto Atualizar(int id, CriarUsuarioDto usuarioDto)
         {
-            Usuario usuarioBanco = _repository.ObterPorID(id);
+            Usuario usuarioBanco = _repository.ObterPorId(id);
 
             if (usuarioBanco == null)
             {
@@ -120,7 +120,7 @@ namespace VHBurguer.Applications.Services
 
         public void Remover(int id)
         {
-            Usuario usuario = _repository.ObterPorID(id);
+            Usuario usuario = _repository.ObterPorId(id);
 
             if(usuario == null)
             {
@@ -129,9 +129,9 @@ namespace VHBurguer.Applications.Services
 
             _repository.Remover(id);
         }
-        public LerUsuarioDto ObterPorID(int id)
+        public LerUsuarioDto ObterPorId(int id)
         {
-            Usuario? usuario = _repository.ObterPorID(id);
+            Usuario? usuario = _repository.ObterPorId(id);
 
             if (usuario == null)
             {

@@ -17,7 +17,7 @@ namespace VHBurguer.Repositories
             return _context.Usuario.ToList();
         }
 
-        public Usuario? ObterPorID(int id)
+        public Usuario? ObterPorId(int id)
         {
             // Find - Melhor com chave primária
             return _context.Usuario.Find(id);

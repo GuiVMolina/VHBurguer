@@ -28,9 +28,9 @@ namespace VHBurguer.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<LerUsuarioDto> ObterPorID(int id)
+        public ActionResult<LerUsuarioDto> ObterPorId(int id)
         {
-            LerUsuarioDto usuario = _service.ObterPorID(id);
+            LerUsuarioDto usuario = _service.ObterPorId(id);
             if (usuario == null)
             {
                 // Não encontrado - StatusCode 404
