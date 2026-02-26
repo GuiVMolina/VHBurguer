@@ -41,6 +41,11 @@ namespace VHBurguer.Applications.Services
                 throw new DomainException("Email ou senha inválidos.");
             }
 
+            if (usuario.StatusUsuario == false)
+            {
+                throw new DomainException("Usuário removido.");
+            }
+
             // Gerando o token
             var token = _tokenJwt.GerarToken(usuario);
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using VHBurguer.Applications.Services;
 using VHBurguer.DTOs.UsuarioDto;
 using VHBurguer.Exceptions;
@@ -30,36 +31,39 @@ namespace VHBurguer.Controllers
         [HttpGet("{id}")]
         public ActionResult<LerUsuarioDto> ObterPorId(int id)
         {
+            LerUsuarioDto usuario = _service.ObterPorId(id);
+
             try
             {
-                LerUsuarioDto usuario = _service.ObterPorId(id);
 
                 // Não encontrado - StatusCode 404
                 return NotFound();
             }
             catch (DomainException ex)
             {
-                return Ok(usuario);
+                return BadRequest(ex.Message);
             }
         }
 
         [HttpGet("email/{email}")]
         public ActionResult<LerUsuarioDto> ObterPorEmail(string email)
         {
+            LerUsuarioDto usuario = _service.ObterPorEmail(email);
+
             try
             {
-                LerUsuarioDto usuario = _service.ObterPorEmail(email);
 
                 return NotFound();
             }
             catch (DomainException ex)
             {
-                return Ok(usuario);
+                return BadRequest(ex.Message);
             }
         }
 
         // POST - Envia dados
         [HttpPost]
+        [Authorize]
         public ActionResult<LerUsuarioDto> Adicionar(CriarUsuarioDto usuarioDto)
         {
             try
@@ -76,11 +80,13 @@ namespace VHBurguer.Controllers
 
         // Realiza alterações de todos os dados
         [HttpPost("{id}")]
+        [Authorize]
         public ActionResult<LerUsuarioDto> Atualizar(int id, CriarUsuarioDto usuarioDto)
         {
             try
             {
                 LerUsuarioDto usuarioAtualizado = _service.Atualizar(id, usuarioDto);
+
                 return StatusCode(200, usuarioAtualizado);
             }
             catch (DomainException ex)
@@ -92,6 +98,7 @@ namespace VHBurguer.Controllers
         // DELETE - Remove os dados
         // (No nosso banco, o DELETE vai inativar o usuário por conta do Trigger (Soft Delete)
         [HttpDelete("{id}")]
+        [Authorize]
         public ActionResult Remover(int id)
         {
             try
