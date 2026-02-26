@@ -61,6 +61,7 @@ namespace VHBurguer.Controllers
             try
             {
                 _service.Atualizar(id, criarDto);
+
                 return NoContent();
             }
             catch (DomainException ex)
