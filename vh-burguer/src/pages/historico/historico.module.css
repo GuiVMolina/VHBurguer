@@ -1,0 +1,40 @@
+#historico {
+  display: flex;
+  padding: 40px 0;
+  justify-content: center;
+  background-color: var(--fundo-claro);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#info {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+#detalhe_info {
+  width: 100%;
+  display: flex;
+  font-weight: 500;
+  justify-content: space-between;
+}
+
+#data_table {
+  gap: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#footer_line {
+  border: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--fundo-escuro);
+}

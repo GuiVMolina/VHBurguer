@@ -1,0 +1,16 @@
+#detalhe {
+  display: flex;
+  padding: 20px;
+  font-weight: 500;
+  border-radius: 20px;
+  background-color: #fff;
+  justify-content: space-between;
+  transition:
+    transform 0.1s ease-in-out,
+    box-shadow 0.1s ease-in-out;
+}
+
+#detalhe:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}

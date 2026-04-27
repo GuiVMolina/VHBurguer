@@ -1,0 +1,23 @@
+#categoria {
+  display: flex;
+  padding: 40px 0;
+  justify-content: center;
+  background-color: var(--fundo-claro);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#categoria label {
+  font-weight: 500;
+}
+
+#botoes {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
