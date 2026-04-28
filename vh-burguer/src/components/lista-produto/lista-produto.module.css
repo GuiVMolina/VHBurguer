@@ -1,8 +1,8 @@
 #cardapio {
-  display: flex;
-  flex-direction: column;
   gap: 20px;
+  display: flex;
   align-items: center;
+  flex-direction: column;
 }
 
 #btn_filtrar_icon {
@@ -22,15 +22,15 @@
 }
 
 #cards_produtos {
+  gap: 40px;
   width: 75%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 40px;
 }
 
 #btn_cardapio {
-  display: flex;
   gap: 10px;
+  display: flex;
 }
 
 @media (max-width: 1366px) {
@@ -41,10 +41,10 @@
 
 @media (max-width: 768px) {
   .campo_btn {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
     gap: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   #cards_produtos {

@@ -32,30 +32,6 @@
   flex-direction: column;
 }
 
-#login button {
-  height: 40px;
-  padding: 5px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: var(--tamanho-texto-btn);
-  border-style: none;
-  border-radius: 10px;
-  color: var(--vinho);
-  background-color: var(--laranja);
-  transition:
-    background-color 0.15s ease-in-out,
-    transform 0.15s ease-in-out;
-}
-
-#login button:hover {
-  transform: translateY(-4px);
-  background-color: color-mix(
-    in srgb,
-    var(--laranja) 100%,
-    var(--fundo-escuro) 10%
-  );
-}
-
 @media (max-width: 768px) {
   #main {
     grid-template-columns: 1fr;
@@ -63,10 +39,5 @@
 
   #main img {
     display: none;
-  }
-
-  #login form {
-    width: 50%;
-    min-width: 400px;
   }
 }

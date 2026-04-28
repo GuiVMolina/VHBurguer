@@ -1,6 +1,6 @@
 .banner {
   padding: 40px 0;
-  min-height: 50vh;
+  min-height: 400px;
   max-height: 75vh;
   display: flex;
   align-items: center;
@@ -12,7 +12,7 @@
 .destaques {
   display: flex;
   padding: 40px 0;
-  min-height: 30vh;
+  min-height: 250px;
   max-height: 75vh;
   align-items: center;
   justify-content: center;
@@ -35,7 +35,7 @@
 .unidades {
   padding: 40px 0;
   display: flex;
-  min-height: 30vh;
+  min-height: 250px;
   max-height: 40vh;
   align-items: center;
   background-size: cover;
@@ -70,6 +70,8 @@
 
 #banner_img {
   width: 75%;
+  max-height: 400px;
+  object-fit: contain;
   filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.5));
 }
 

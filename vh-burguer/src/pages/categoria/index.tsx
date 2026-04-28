@@ -1,9 +1,18 @@
-import Footer from "@/components/footer/footer";
 import Subheader from "@/components/sub-header/subheader";
+import Footer from "@/components/footer/footer";
 import styles from "./categoria.module.css";
 import Link from "next/link";
+import { useState } from "react";
+import { cadastrarCategoria } from "../api/categoriaService";
 
 const Categoria = () => {
+  const [categoria, setCategoria] = useState<string>("");
+
+  function cadastrar(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    cadastrarCategoria(categoria);
+  }
+
   return (
     <>
       <Subheader />
@@ -11,22 +20,25 @@ const Categoria = () => {
         <div className={`${styles.container} layout_guide`}>
           <div className="card">
             <h1 className="title2">Criar categoria</h1>
-            <form className="form">
+            <form className="form" onSubmit={cadastrar}>
               <div className="input_campo">
-                <label>Nome do produto</label>
+                <label className="label">Nome do produto</label>
                 <input
                   className="input"
                   type="text"
+                  name="nome"
                   placeholder="BBQ Especial"
+                  onChange={(e) => setCategoria(e.target.value)}
+                  required
                 />
               </div>
               <div id={styles.botoes}>
                 <Link href="/produto" className="btn1">
                   Adicionar Produto
                 </Link>
-                <Link href="#" className="btn2">
+                <button className="btn2">
                   Salvar
-                </Link>
+                </button>
               </div>
             </form>
           </div>
