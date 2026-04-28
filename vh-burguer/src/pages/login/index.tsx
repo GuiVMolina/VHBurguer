@@ -7,14 +7,24 @@ import { useState } from "react";
 // Importando a API
 import { login } from "../api/authService";
 
+// Importando o Router
+import { useRouter } from "next/router";
+
 // Estrutura padrão
 const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [senha, setSenha] = useState<string>("");
 
-  function autenticar(e: React.FormEvent<HTMLFormElement>) {
+  const router = useRouter();
+
+  async function autenticar(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    login(email, senha);
+    try {
+      await login(email, senha);
+      router.push("/home");
+    } catch (error: any) {
+      alert(error.message);
+    }
   }
 
   return (
