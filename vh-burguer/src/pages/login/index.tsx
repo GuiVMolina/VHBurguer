@@ -10,6 +10,9 @@ import { login } from "../api/authService";
 // Importando o Router
 import { useRouter } from "next/router";
 
+// Importando o Toastify
+import { ToastContainer, toast } from "react-toastify";
+
 // Estrutura padrão
 const Login = () => {
   const [email, setEmail] = useState<string>("");
@@ -17,18 +20,33 @@ const Login = () => {
 
   const router = useRouter();
 
+  const notify = (msg: string) =>
+    toast.success(msg, {
+      position: "bottom-left",
+      autoClose: 2000,
+      closeOnClick: true,
+      draggable: true,
+    });
+  const erro = (msg: string) => toast.error(msg);
+
   async function autenticar(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
       await login(email, senha);
-      router.push("/home");
+      notify("🍔 Login bem sucedido!");
+
+      // Push depois de 2 segundos
+      setTimeout(() => {
+        router.push("/home");
+      }, 2000);
     } catch (error: any) {
-      alert(error.message);
+      erro(error.message);
     }
   }
 
   return (
     <>
+      <ToastContainer />
       <main id={styles.main}>
         <img src="../imgs/hamburguer_login.png" alt="" />
         <div id={styles.login}>
