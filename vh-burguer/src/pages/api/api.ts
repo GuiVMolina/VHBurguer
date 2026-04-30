@@ -17,7 +17,7 @@ api.interceptors.request.use((config) => {
   const token = secureLocalStorage.getItem("userToken");
 
   if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+    config.headers.Authorization = "Bearer " + token;
   }
 
   return config;
