@@ -85,7 +85,7 @@ namespace VHBurguer.Controllers
         [Consumes("multipart/form-data")]
 
         // Exige login para adicionar produtos
-        [Authorize]
+        //[Authorize]
         
         // [FromForm] - Diz que os dados vem da requisição (multipart/form-data)
         public ActionResult Adicionar([FromForm] CriarProdutoDto produtoDto) {

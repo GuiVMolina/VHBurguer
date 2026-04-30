@@ -6,7 +6,8 @@ import Link from "next/link";
 import { listarCategoria } from "../api/categoriaService";
 import { useEffect, useState } from "react";
 import { cadastrarProduto } from "../api/produtoService";
-import { notificacao } from "@/components/utils/toast";
+import { erro, notificacao } from "@/components/utils/toast";
+import { ToastContainer } from "react-toastify";
 
 interface Categoria {
   categoriaID: number;
@@ -23,6 +24,12 @@ const Produto = () => {
   const [categoriasSelecionadas, setCategoriasSelecionadas] = useState<
     number[]
   >([]);
+
+  console.log(nome);
+  console.log(descricao);
+  console.log(preco);
+  console.log(imagem);
+  console.log(categoriasSelecionadas);
 
   async function listarCategoriaProduto() {
     const lista = await listarCategoria();
@@ -42,7 +49,7 @@ const Produto = () => {
       await cadastrarProduto(dados);
       notificacao("Produto cadastrado!");
     } catch (error: any) {
-      alert(error.response.data);
+      erro(error.message);
     }
   }
 
@@ -54,6 +61,7 @@ const Produto = () => {
 
   return (
     <>
+      <ToastContainer />
       <Subheader />
       <section className="min_height" id={styles.produto}>
         <div className={`${styles.container} layout_guide`}>
@@ -97,26 +105,46 @@ const Produto = () => {
                 />
               </div>
               <div className="input_campo">
-                <label className="label">Categoria</label>
-                <select
-                  className="input"
-                  multiple
-                  onChange={(e) =>
-                    setCategoriasSelecionadas(
-                      Array.from(e.target.selectedOptions).map((option) =>
-                        Number(option.value),
-                      ),
-                    )
-                  }
-                  required
-                >
+                <label className="label">Categorias</label>
+                <div className="checkbox">
                   {categorias.map((item) => (
-                    <option value={item.categoriaID}>{item.nome}</option>
+                    <div key={item.categoriaID}>
+                      <input
+                        type="checkbox"
+                        id={`cat-${item.categoriaID}`}
+                        value={item.categoriaID}
+                        checked={categoriasSelecionadas.includes(
+                          item.categoriaID,
+                        )}
+                        onChange={(e) => {
+                          const id = Number(e.target.value);
+                          if (e.target.checked) {
+                            // Adiciona à lista
+                            setCategoriasSelecionadas([
+                              ...categoriasSelecionadas,
+                              id,
+                            ]);
+                          } else {
+                            // Remove da lista
+                            setCategoriasSelecionadas(
+                              categoriasSelecionadas.filter((c) => c !== id),
+                            );
+                          }
+                        }}
+                      />
+                      <label
+                        htmlFor={`cat-${item.categoriaID}`}
+                        className="checkbox_label"
+                      >
+                        {item.nome}
+                      </label>
+                    </div>
                   ))}
-                </select>
-                <a className="a_input less_bottom_margin" href="/categoria">
+                </div>
+
+                <Link className="a_input less_bottom_margin" href="/categoria">
                   Adicionar categoria
-                </a>
+                </Link>
               </div>
               <div className="input_campo">
                 <label className="label">URL da imagem</label>
@@ -134,12 +162,10 @@ const Produto = () => {
                 />
               </div>
               <div id={styles.botoes}>
-                <Link href="/historico" className="btn1">
+                <Link className="btn1" href="/historico">
                   Histórico
                 </Link>
-                <Link href="#" className="btn2">
-                  Salvar
-                </Link>
+                <button className="btn2">Salvar</button>
               </div>
             </form>
           </div>

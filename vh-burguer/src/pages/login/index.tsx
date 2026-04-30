@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 
 // Importando o Toastify
 import { ToastContainer, toast } from "react-toastify";
+import { erro, notificacao } from "@/components/utils/toast";
 
 // Estrutura padrão
 const Login = () => {
@@ -20,20 +21,11 @@ const Login = () => {
 
   const router = useRouter();
 
-  const notify = (msg: string) =>
-    toast.success(msg, {
-      position: "bottom-right",
-      autoClose: 2000,
-      closeOnClick: true,
-      draggable: true,
-    });
-  const erro = (msg: string) => toast.error(msg);
-
   async function autenticar(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
       await login(email, senha);
-      notify("Login bem sucedido!");
+      notificacao("Login bem sucedido!");
 
       // Push depois de 3 segundos
       setTimeout(() => {

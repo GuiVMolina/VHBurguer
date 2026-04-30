@@ -21,7 +21,7 @@ export async function cadastrarProduto(dados: Produto) {
     }
 
     dados.categoriaId.forEach((id) => {
-      formData.append("catgoriaId", id.toString());
+      formData.append("categoriaId", id.toString());
     });
 
     await api.post("Produto", formData);

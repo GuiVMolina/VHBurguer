@@ -4,22 +4,20 @@ import styles from "./categoria.module.css";
 import Link from "next/link";
 
 import { cadastrarCategoria } from "../api/categoriaService";
+import { erro, notificacao } from "@/components/utils/toast";
 import { toast, ToastContainer } from "react-toastify";
 import { useState } from "react";
 
 const Categoria = () => {
   const [categoria, setCategoria] = useState<string>("");
 
-  const notificacao = (msg: string) => toast.success(msg);
-  const erro = (msg: string) => toast.error(msg);
-
   async function Cadastrar(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
       await cadastrarCategoria(categoria);
-      notificacao("Cadastro realizado com sucesso!");
+      notificacao("Categoria cadastrada!");
     } catch (error: any) {
-      erro(error.response.data);
+      erro(error.message);
     }
   }
 
@@ -33,12 +31,12 @@ const Categoria = () => {
             <h1 className="title2">Criar categoria</h1>
             <form className="form" onSubmit={Cadastrar}>
               <div className="input_campo">
-                <label className="label">Nome do produto</label>
+                <label className="label">Nome da categoria</label>
                 <input
                   className="input"
                   type="text"
                   name="nome"
-                  placeholder="BBQ Especial"
+                  placeholder="Especial"
                   onChange={(e) => setCategoria(e.target.value)}
                   required
                 />
