@@ -40,7 +40,7 @@ const Login = () => {
         router.push("/home");
       }, 3000);
     } catch (error: any) {
-      erro(error.message);
+      erro(error.response.data);
     }
   }
 

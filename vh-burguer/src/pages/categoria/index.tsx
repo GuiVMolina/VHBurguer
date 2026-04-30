@@ -19,7 +19,7 @@ const Categoria = () => {
       await cadastrarCategoria(categoria);
       notificacao("Cadastro realizado com sucesso!");
     } catch (error: any) {
-      erro(error.message);
+      erro(error.response.data);
     }
   }
 

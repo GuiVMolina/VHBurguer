@@ -6,6 +6,7 @@ import Link from "next/link";
 import { listarCategoria } from "../api/categoriaService";
 import { useEffect, useState } from "react";
 import { cadastrarProduto } from "../api/produtoService";
+import { notificacao } from "@/components/utils/toast";
 
 interface Categoria {
   categoriaID: number;
@@ -38,10 +39,10 @@ const Produto = () => {
         imagem,
         categoriaId: categoriasSelecionadas,
       };
-
       await cadastrarProduto(dados);
+      notificacao("Produto cadastrado!");
     } catch (error: any) {
-      alert(error.message);
+      alert(error.response.data);
     }
   }
 

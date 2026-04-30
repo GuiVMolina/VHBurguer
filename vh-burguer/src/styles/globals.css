@@ -4,11 +4,11 @@
   box-sizing: border-box;
   color: var(--fonte-escura);
   font-family: var(--font-fredoka);
+  user-select: none;
 }
 
 html {
   scrollbar-width: auto;
-  scroll-behavior: smooth;
   scrollbar-color: var(--laranja) var(--vinho);
 }
 
@@ -174,9 +174,9 @@ html {
 }
 
 .input {
+  padding: 15px;
   min-height: 50px;
   max-height: 200px;
-  padding: 15px;
   font-size: var(--tamanho-texto-input);
   border-style: none;
   border-radius: 10px;
