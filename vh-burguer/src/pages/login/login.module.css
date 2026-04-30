@@ -1,3 +1,16 @@
+:global(.Toastify__toast--success) {
+  font-weight: bold;
+  background-color: #fff !important;
+}
+
+:global(.Toastify__progress-bar--success) {
+  background: var(--laranja) !important;
+}
+
+:global(.Toastify__toast--success .Toastify__toast-icon svg) {
+  fill: var(--laranja) !important;
+}
+
 #main {
   display: grid;
   min-height: 100vh;

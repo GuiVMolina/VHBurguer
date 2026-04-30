@@ -22,7 +22,7 @@ const Login = () => {
 
   const notify = (msg: string) =>
     toast.success(msg, {
-      position: "bottom-left",
+      position: "bottom-right",
       autoClose: 2000,
       closeOnClick: true,
       draggable: true,
@@ -33,12 +33,12 @@ const Login = () => {
     e.preventDefault();
     try {
       await login(email, senha);
-      notify("🍔 Login bem sucedido!");
+      notify("Login bem sucedido!");
 
-      // Push depois de 2 segundos
+      // Push depois de 3 segundos
       setTimeout(() => {
         router.push("/home");
-      }, 2000);
+      }, 3000);
     } catch (error: any) {
       erro(error.message);
     }

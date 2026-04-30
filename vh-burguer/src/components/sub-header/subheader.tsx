@@ -1,5 +1,5 @@
-import Link from "next/link";
 import styles from "./subheader.module.css";
+import Link from "next/link";
 
 const Subheader = () => {
   return (

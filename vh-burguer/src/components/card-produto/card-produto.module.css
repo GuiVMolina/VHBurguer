@@ -9,6 +9,7 @@
   text-decoration: none;
   flex-direction: column;
   transition: transform 0.1s ease-in-out;
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25);
 }
 
@@ -27,9 +28,10 @@
   flex-direction: column;
   justify-content: space-between;
   background: linear-gradient(
-    rgba(0, 0, 0, 0.35) 0%,
-    transparent 50%,
-    rgba(0, 0, 0, 0.85) 100%
+    color-mix(var(--laranja) 100%, var(--fundo-escuro) 75%) 0%,
+    transparent 35%,
+    transparent 65%,
+    color-mix(var(--vinho) 100%, var(--fundo-escuro) 75%) 100%
   );
   color: white;
 }
@@ -43,9 +45,9 @@
 
 #edit_card {
   display: flex;
-  justify-content: space-between;
-  flex-direction: column;
   align-items: flex-end;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100%;
-  filter: drop-shadow(0 0 5px rgba(0,0,0,1));
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
 }

@@ -1,6 +1,6 @@
+import ListaProduto from "@/components/lista-produto/lista-produto";
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
-import ListaProduto from "@/components/lista-produto/lista-produto";
 import styles from "./home.module.css";
 
 const Home = () => {
@@ -35,7 +35,7 @@ const Home = () => {
                   alt=""
                 />
                 <div className={styles.texto_esq}>
-                  <p>Os queridinhos da tabela</p>
+                  <p>Os queridinhos da galera</p>
                   <h3>Mais pedidos</h3>
                 </div>
               </div>

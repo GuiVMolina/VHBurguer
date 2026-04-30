@@ -1,5 +1,5 @@
-import styles from "./lista-produto.module.css";
 import CardProduto from "../card-produto/card-produto";
+import styles from "./lista-produto.module.css";
 import Link from "next/link";
 
 const ListaProduto = () => {

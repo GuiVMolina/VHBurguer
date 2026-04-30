@@ -2,25 +2,36 @@ import Subheader from "@/components/sub-header/subheader";
 import Footer from "@/components/footer/footer";
 import styles from "./categoria.module.css";
 import Link from "next/link";
-import { useState } from "react";
+
 import { cadastrarCategoria } from "../api/categoriaService";
+import { toast, ToastContainer } from "react-toastify";
+import { useState } from "react";
 
 const Categoria = () => {
   const [categoria, setCategoria] = useState<string>("");
 
-  function cadastrar(e: React.FormEvent<HTMLFormElement>) {
+  const notificacao = (msg: string) => toast.success(msg);
+  const erro = (msg: string) => toast.error(msg);
+
+  async function Cadastrar(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    cadastrarCategoria(categoria);
+    try {
+      await cadastrarCategoria(categoria);
+      notificacao("Cadastro realizado com sucesso!");
+    } catch (error: any) {
+      erro(error.message);
+    }
   }
 
   return (
     <>
+      <ToastContainer />
       <Subheader />
       <section className="min_height" id={styles.categoria}>
         <div className={`${styles.container} layout_guide`}>
           <div className="card">
             <h1 className="title2">Criar categoria</h1>
-            <form className="form" onSubmit={cadastrar}>
+            <form className="form" onSubmit={Cadastrar}>
               <div className="input_campo">
                 <label className="label">Nome do produto</label>
                 <input
@@ -36,9 +47,7 @@ const Categoria = () => {
                 <Link href="/produto" className="btn1">
                   Adicionar Produto
                 </Link>
-                <button className="btn2">
-                  Salvar
-                </button>
+                <button className="btn2">Salvar</button>
               </div>
             </form>
           </div>

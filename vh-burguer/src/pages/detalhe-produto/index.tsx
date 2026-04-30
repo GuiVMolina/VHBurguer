@@ -1,6 +1,6 @@
-import Footer from "@/components/footer/footer";
-import styles from "./detalhe-produto.module.css";
 import Subheader from "@/components/sub-header/subheader";
+import styles from "./detalhe-produto.module.css";
+import Footer from "@/components/footer/footer";
 
 const DetalheProduto = () => {
   return (

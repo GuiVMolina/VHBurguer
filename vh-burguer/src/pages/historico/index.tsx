@@ -1,6 +1,6 @@
 import DataTable from "@/components/data-table/data-table";
-import Footer from "@/components/footer/footer";
 import Subheader from "@/components/sub-header/subheader";
+import Footer from "@/components/footer/footer";
 import styles from "./historico.module.css";
 
 const Historico = () => {

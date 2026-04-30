@@ -1,5 +1,5 @@
-import Link from "next/link";
 import styles from "./card-produto.module.css";
+import Link from "next/link";
 
 const CardProduto = () => {
   return (
