@@ -7,24 +7,8 @@
       "RelativeMoniker": "D:0:0:{FA88472D-677F-FB96-0032-83191C6350EA}|VHBurguer.csproj|solutionrelative:applications\\conversoes\\produtoparadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FA88472D-677F-FB96-0032-83191C6350EA}|VHBurguer.csproj|c:\\users\\46581849820\\desktop\\git\\vhburguer\\vhburguerapi\\dtos\\produtodto\\criarprodutodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FA88472D-677F-FB96-0032-83191C6350EA}|VHBurguer.csproj|solutionrelative:dtos\\produtodto\\criarprodutodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FA88472D-677F-FB96-0032-83191C6350EA}|VHBurguer.csproj|c:\\users\\46581849820\\desktop\\git\\vhburguer\\vhburguerapi\\dtos\\produtodto\\atualizarprodutodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FA88472D-677F-FB96-0032-83191C6350EA}|VHBurguer.csproj|solutionrelative:dtos\\produtodto\\atualizarprodutodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{FA88472D-677F-FB96-0032-83191C6350EA}|VHBurguer.csproj|c:\\users\\46581849820\\desktop\\git\\vhburguer\\vhburguerapi\\dtos\\produtodto\\lerprodutodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FA88472D-677F-FB96-0032-83191C6350EA}|VHBurguer.csproj|solutionrelative:dtos\\produtodto\\lerprodutodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FA88472D-677F-FB96-0032-83191C6350EA}|VHBurguer.csproj|c:\\users\\46581849820\\desktop\\git\\vhburguer\\vhburguerapi\\applications\\autenticacao\\geradortokenjwt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FA88472D-677F-FB96-0032-83191C6350EA}|VHBurguer.csproj|solutionrelative:applications\\autenticacao\\geradortokenjwt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FA88472D-677F-FB96-0032-83191C6350EA}|VHBurguer.csproj|c:\\users\\46581849820\\desktop\\git\\vhburguer\\vhburguerapi\\repositories\\produtorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FA88472D-677F-FB96-0032-83191C6350EA}|VHBurguer.csproj|solutionrelative:repositories\\produtorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,12 +18,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 400,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -48,74 +28,27 @@
               "RelativeDocumentMoniker": "Applications\\Conversoes\\ProdutoParaDto.cs",
               "ToolTip": "C:\\Users\\46581849820\\Desktop\\Git\\VHBurguer\\VHBurguerAPI\\Applications\\Conversoes\\ProdutoParaDto.cs",
               "RelativeToolTip": "Applications\\Conversoes\\ProdutoParaDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-30T14:19:32.372Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AtualizarProdutoDto.cs",
-              "DocumentMoniker": "C:\\Users\\46581849820\\Desktop\\Git\\VHBurguer\\VHBurguerAPI\\DTOs\\ProdutoDto\\AtualizarProdutoDto.cs",
-              "RelativeDocumentMoniker": "DTOs\\ProdutoDto\\AtualizarProdutoDto.cs",
-              "ToolTip": "C:\\Users\\46581849820\\Desktop\\Git\\VHBurguer\\VHBurguerAPI\\DTOs\\ProdutoDto\\AtualizarProdutoDto.cs",
-              "RelativeToolTip": "DTOs\\ProdutoDto\\AtualizarProdutoDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-30T14:18:38.335Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GeradorTokenJwt.cs",
-              "DocumentMoniker": "C:\\Users\\46581849820\\Desktop\\Git\\VHBurguer\\VHBurguerAPI\\Applications\\Autenticacao\\GeradorTokenJwt.cs",
-              "RelativeDocumentMoniker": "Applications\\Autenticacao\\GeradorTokenJwt.cs",
-              "ToolTip": "C:\\Users\\46581849820\\Desktop\\Git\\VHBurguer\\VHBurguerAPI\\Applications\\Autenticacao\\GeradorTokenJwt.cs",
-              "RelativeToolTip": "Applications\\Autenticacao\\GeradorTokenJwt.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFAAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-30T14:18:08.379Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "LerProdutoDto.cs",
-              "DocumentMoniker": "C:\\Users\\46581849820\\Desktop\\Git\\VHBurguer\\VHBurguerAPI\\DTOs\\ProdutoDto\\LerProdutoDto.cs",
-              "RelativeDocumentMoniker": "DTOs\\ProdutoDto\\LerProdutoDto.cs",
-              "ToolTip": "C:\\Users\\46581849820\\Desktop\\Git\\VHBurguer\\VHBurguerAPI\\DTOs\\ProdutoDto\\LerProdutoDto.cs",
-              "RelativeToolTip": "DTOs\\ProdutoDto\\LerProdutoDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-30T13:33:51.475Z",
+              "WhenOpened": "2026-05-04T11:35:31.353Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CriarProdutoDto.cs",
-              "DocumentMoniker": "C:\\Users\\46581849820\\Desktop\\Git\\VHBurguer\\VHBurguerAPI\\DTOs\\ProdutoDto\\CriarProdutoDto.cs",
-              "RelativeDocumentMoniker": "DTOs\\ProdutoDto\\CriarProdutoDto.cs",
-              "ToolTip": "C:\\Users\\46581849820\\Desktop\\Git\\VHBurguer\\VHBurguerAPI\\DTOs\\ProdutoDto\\CriarProdutoDto.cs",
-              "RelativeToolTip": "DTOs\\ProdutoDto\\CriarProdutoDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Title": "LerProdutoDto.cs",
+              "DocumentMoniker": "C:\\Users\\46581849820\\Desktop\\Git\\VHBurguer\\VHBurguerAPI\\DTOs\\ProdutoDto\\LerProdutoDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\ProdutoDto\\LerProdutoDto.cs",
+              "ToolTip": "C:\\Users\\46581849820\\Desktop\\Git\\VHBurguer\\VHBurguerAPI\\DTOs\\ProdutoDto\\LerProdutoDto.cs",
+              "RelativeToolTip": "DTOs\\ProdutoDto\\LerProdutoDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-30T13:33:49.863Z",
+              "WhenOpened": "2026-05-04T11:34:55.845Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ProdutoRepository.cs",
-              "DocumentMoniker": "C:\\Users\\46581849820\\Desktop\\Git\\VHBurguer\\VHBurguerAPI\\Repositories\\ProdutoRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\ProdutoRepository.cs",
-              "ToolTip": "C:\\Users\\46581849820\\Desktop\\Git\\VHBurguer\\VHBurguerAPI\\Repositories\\ProdutoRepository.cs",
-              "RelativeToolTip": "Repositories\\ProdutoRepository.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAUwCIAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-30T13:06:56.446Z"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             }
           ]
         },

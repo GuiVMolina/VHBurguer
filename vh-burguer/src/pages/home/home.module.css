@@ -38,18 +38,36 @@
   min-height: 250px;
   max-height: 40vh;
   align-items: center;
-  background-size: cover;
   justify-content: center;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition: filter 0.25s ease-in-out;
+  position: relative;
+  overflow: hidden;
   background-color: var(--fundo-escuro);
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.25)),
-    url("../../../public/imgs/unidade.jpeg");
 }
 
-.unidades:hover {
+.unidades::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.25)),
+    url("../../../public/imgs/unidade.jpeg");
+  
+  z-index: 0;
+  transition: filter 0.25s ease-in-out;
+}
+
+.unidades > * {
+  position: relative;
+  z-index: 1;
+}
+
+.unidades:hover::before {
   filter: brightness(1.5);
 }
 

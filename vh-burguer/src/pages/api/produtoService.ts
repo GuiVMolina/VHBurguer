@@ -5,6 +5,7 @@ type Produto = {
   descricao: string;
   preco: string;
   imagem: File | null;
+  imagemUrl: string;
   categoriaId: number[];
 };
 
@@ -25,6 +26,36 @@ export async function cadastrarProduto(dados: Produto) {
     });
 
     await api.post("Produto", formData);
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+}
+
+export async function listarProduto() {
+  try {
+    const response = await api.get("Produto");
+
+    const produtos = response.data.map((produto: Produto) => ({
+      ...produto,
+      imagemUrl: `${api.defaults.baseURL}${produto.imagemUrl}`,
+    }));
+
+    return produtos;
+  } catch (error: any) {
+    throw new Error(error.response.data);
+  }
+}
+
+export async function listarPorId(id: number) {
+  try {
+    const response = await api.get("Produto/" + id);
+
+    const produtos = response.data.map((produto: Produto) => ({
+      ...produto,
+      imagemUrl: `${api.defaults.baseURL}${produto.imagemUrl}`,
+    }));
+    
+    return produtos;
   } catch (error: any) {
     throw new Error(error.message);
   }

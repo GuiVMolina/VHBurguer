@@ -307,9 +307,13 @@ html {
 
 .title4 {
   display: flex;
+  font-weight: 600;
   justify-content: center;
   color: var(--fonte-clara);
-  font-size: var(--tamanho-titulo-card);
+  font-size: var(--tamanho-sub-titulo-card);
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .subtitle {

@@ -1,8 +1,32 @@
 import CardProduto from "../card-produto/card-produto";
 import styles from "./lista-produto.module.css";
 import Link from "next/link";
+import { listarProduto } from "@/pages/api/produtoService";
+import { useEffect, useState } from "react";
+
+interface Produto {
+  produtoID: number;
+  imagemUrl: string;
+  nome: string;
+  preco: number;
+}
 
 const ListaProduto = () => {
+  const [produtos, setProdutos] = useState<Produto[]>([]);
+
+  async function listar() {
+    try {
+      const lista = await listarProduto();
+      setProdutos(lista);
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  }
+
+  useEffect(() => {
+    listar();
+  }, []);
+
   return (
     <>
       <div id={styles.cardapio}>
@@ -37,14 +61,19 @@ const ListaProduto = () => {
           </div>
         </div>
         <div id={styles.cards_produtos}>
-          <CardProduto />
-          <CardProduto />
-          <CardProduto />
-          <CardProduto />
-          <CardProduto />
-          <CardProduto />
-          <CardProduto />
-          <CardProduto />
+          {produtos.length > 0 ? (
+            produtos.map((item) => (
+              <CardProduto
+                key={item.produtoID}
+                produtoID={item.produtoID}
+                titulo={item.nome}
+                preco={item.preco}
+                img={item.imagemUrl}
+              />
+            ))
+          ) : (
+            <p>Carregando produtos...</p>
+          )}
         </div>
       </div>
     </>

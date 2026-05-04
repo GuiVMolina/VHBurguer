@@ -17,6 +17,9 @@ namespace VHBurguer.DTOs.ProdutoDto
         
         public List<string> Categorias { get; set; } = new();
 
+        // Imagem
+        public string ImagemUrl { get; set; }
+
         // Usuário que cadastrou
         public int? UsuarioID { get; set; }
 

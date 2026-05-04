@@ -1022,6 +1022,10 @@
             },
             "nullable": true
           },
+          "imagemUrl": {
+            "type": "string",
+            "nullable": true
+          },
           "usuarioID": {
             "type": "integer",
             "format": "int32",
