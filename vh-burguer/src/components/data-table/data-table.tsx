@@ -1,15 +1,20 @@
-import styles from "./data-table.module.css"
+import styles from "./data-table.module.css";
+import { formatarPreco } from "../utils/formatacao";
 
-const DataTable = () => {
-  return(
-    <>
-      <div id={styles.detalhe}>
-        <p>12/12/12</p>
-        <p>Monstro</p>
-        <p>R$55,00</p>
-      </div>
-    </>
-  )
-}
+type Dados = {
+  dataAlteracao: string;
+  nomeAnterior: string;
+  precoAnterior: number;
+};
+
+const DataTable = ({ dataAlteracao, nomeAnterior, precoAnterior }: Dados) => {
+  return (
+    <tr id={styles.detalhe}>
+      <td>{dataAlteracao}</td>
+      <td>{nomeAnterior}</td>
+      <td>{formatarPreco(precoAnterior)}</td>
+    </tr>
+  );
+};
 
 export default DataTable;

@@ -18,8 +18,12 @@ const Home = () => {
               alt=""
             />
             <div id={styles.botoes}>
-              <a href="" className="btn1">Chamar atendente</a>
-              <a href="#cardapio" className="btn2">Ver cardápio</a>
+              <a href="#unidades" className="btn1">
+                Chamar atendente
+              </a>
+              <a href="#cardapio" className="btn2">
+                Ver cardápio
+              </a>
             </div>
           </div>
         </section>

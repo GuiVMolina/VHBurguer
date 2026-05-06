@@ -5,7 +5,6 @@ import Link from "next/link";
 
 import { cadastrarCategoria } from "../api/categoriaService";
 import { erro, notificacao } from "@/components/utils/toast";
-import { toast, ToastContainer } from "react-toastify";
 import { useState } from "react";
 
 const Categoria = () => {
@@ -23,9 +22,8 @@ const Categoria = () => {
 
   return (
     <>
-      <ToastContainer />
       <Subheader />
-      <section className="min_height" id={styles.categoria}>
+      <main className="min_height" id={styles.categoria}>
         <div className={`${styles.container} layout_guide`}>
           <div className="card">
             <h1 className="title2">Criar categoria</h1>
@@ -50,7 +48,7 @@ const Categoria = () => {
             </form>
           </div>
         </div>
-      </section>
+      </main>
       <Footer />
     </>
   );

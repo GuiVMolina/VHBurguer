@@ -12,7 +12,7 @@
   justify-content: space-between;
 }
 
-#subheader a {
+#link {
   text-decoration: none;
   font-size: var(--tamanho-texto-navbar);
   font-weight: 500;
@@ -22,13 +22,13 @@
     color 0.1s ease-in-out;
 }
 
-#subheader a:hover {
+#link:hover {
   transform: translateY(-4px);
   color: color-mix(var(--laranja), var(--fonte-clara));
 }
 
 #logo {
-  height: 40%;
+  width: 60%;
   transition: opacity 0.1s ease-in-out;
 }
 

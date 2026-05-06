@@ -11,7 +11,6 @@ import { login } from "../api/authService";
 import { useRouter } from "next/router";
 
 // Importando o Toastify
-import { ToastContainer, toast } from "react-toastify";
 import { erro, notificacao } from "@/components/utils/toast";
 
 // Estrutura padrão
@@ -38,7 +37,6 @@ const Login = () => {
 
   return (
     <>
-      <ToastContainer />
       <main id={styles.main}>
         <img src="../imgs/hamburguer_login.png" alt="" />
         <div id={styles.login}>

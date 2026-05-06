@@ -11,10 +11,18 @@ const Header = () => {
           alt="Logo do VH Burguer que contém como plano de fundo um hamburguer"
         />
         <nav id={styles.navbar}>
-          <a href="#destaques" className="link">Destaques</a>
-          <a href="#cardapio" className="link">Cardápio</a>
-          <a href="#unidades" className="link">Unidades</a>
-          <Link href="/login" id={styles.login}>Login</Link>
+          <a href="#destaques" className="link">
+            Destaques
+          </a>
+          <a href="#cardapio" className="link">
+            Cardápio
+          </a>
+          <a href="#unidades" className="link">
+            Unidades
+          </a>
+          <Link href="/login" id={styles.login}>
+            Login
+          </Link>
         </nav>
 
         <button id={styles.btn_icon}>

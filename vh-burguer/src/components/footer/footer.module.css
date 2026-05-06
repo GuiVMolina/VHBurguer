@@ -20,7 +20,7 @@
 }
 
 #logo {
-  height: 60%;
+  width: 60%;
   transition: opacity .1s ease-in-out;
 }
 
@@ -38,8 +38,8 @@
 }
 
 #footer_text {
-  color: var(--laranja);
   font-weight: 300;
+  color: var(--laranja);
 }
 
 #footer_line {

@@ -1,10 +1,11 @@
 import DataTable from "@/components/data-table/data-table";
 import Subheader from "@/components/sub-header/subheader";
 import Footer from "@/components/footer/footer";
-import styles from "./historico.module.css";
-import { listar } from "@/pages/api/logProdutoService";
+import styles from "./../historico.module.css";
+import { listarProdutoId } from "@/pages/api/logProdutoService";
 import { erro } from "@/components/utils/toast";
 import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 
 type HistoricoAlteracao = {
   logID: number;
@@ -13,41 +14,43 @@ type HistoricoAlteracao = {
   precoAnterior: number;
 };
 
-const HistoricoGeral = () => {
-  const [historico, setHistorico] = useState<HistoricoAlteracao[] | null>(null);
+const Historico = () => {
+  const [historico, setHistorico] = useState<HistoricoAlteracao[]>([]);
 
-  async function carregarHistoricoCompleto() {
+  const params = useParams();
+  const id = params?.id;
+
+  async function listarHistorico() {
     try {
-      const lista = await listar();
+      const lista = await listarProdutoId(Number(id));
       setHistorico(lista);
     } catch (error: any) {
-      erro("Erro ao carregar o histórico geral: " + error.message);
-      setHistorico([]);
+      erro(error.message);
     }
   }
 
   useEffect(() => {
-    carregarHistoricoCompleto();
-  }, []);
+    if (!id) return;
+    listarHistorico();
+  });
 
   return (
     <>
       <Subheader />
       <main className="min_height" id={styles.historico}>
         <div className={`${styles.container} layout_guide`}>
+          <h1 className="title2">Histórico de alterações:</h1>
           <div id={styles.card}>
-            <h1 className="title2">Histórico Geral</h1>
-
             {historico === null ? (
-              <p>Carregando histórico completo...</p>
+              <p>Carregando historico</p>
             ) : historico.length === 0 ? (
-              <p>Não existem registros de alterações no sistema.</p>
+              <p>O produto não contém histórico de alterações</p>
             ) : (
               <table id={styles.info}>
                 <thead id={styles.detalhe_info}>
                   <tr>
                     <th>Data da alteração</th>
-                    <th>Produto</th>
+                    <th>Nome Anterior</th>
                     <th>Preço Anterior</th>
                   </tr>
                 </thead>
@@ -72,4 +75,4 @@ const HistoricoGeral = () => {
   );
 };
 
-export default HistoricoGeral;
+export default Historico;

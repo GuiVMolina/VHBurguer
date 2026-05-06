@@ -108,7 +108,7 @@ namespace VHBurguer.Applications.Services
 
         public LerProdutoDto Atualizar(int id, AtualizarProdutoDto produtoDto)
         {
-            HorarioAlterecaoProduto.ValidarHorario();
+            //HorarioAlterecaoProduto.ValidarHorario();
 
             Produto produtoBanco = _repository.ObterPorId(id);
 
@@ -154,7 +154,7 @@ namespace VHBurguer.Applications.Services
 
         public void Remover(int id)
         {
-            HorarioAlterecaoProduto.ValidarHorario();
+            //HorarioAlterecaoProduto.ValidarHorario();
 
             Produto produto = _repository.ObterPorId(id);
 

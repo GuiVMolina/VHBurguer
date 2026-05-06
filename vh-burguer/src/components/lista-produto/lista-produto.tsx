@@ -1,14 +1,16 @@
-import CardProduto from "../card-produto/card-produto";
+import CardProduto from "../card-produto/[id]/card-produto";
 import styles from "./lista-produto.module.css";
 import Link from "next/link";
-import { listarProduto } from "@/pages/api/produtoService";
+import { excluirProduto, listarProduto } from "@/pages/api/produtoService";
 import { useEffect, useState } from "react";
+import { erro, notificacao, toastConfirmarExcluir } from "../utils/toast";
 
 interface Produto {
   produtoID: number;
   imagemUrl: string;
   nome: string;
   preco: number;
+  statusProduto: boolean;
 }
 
 const ListaProduto = () => {
@@ -19,8 +21,28 @@ const ListaProduto = () => {
       const lista = await listarProduto();
       setProdutos(lista);
     } catch (error: any) {
-      console.log(error.message);
+      erro(error.message);
     }
+  }
+
+  function confirmarExcluir(produtoId: number) {
+    toastConfirmarExcluir(async () => {
+      try {
+        await excluirProduto(produtoId);
+        setProdutos((listaAtual) =>
+          listaAtual.map((produto) =>
+            produto.produtoID === produtoId
+              ? { ...produto, statusProduto: false }
+              : produto,
+          ),
+        );
+
+        notificacao("Produto inativado!");
+        listar();
+      } catch (error: any) {
+        erro(error.message);
+      }
+    });
   }
 
   useEffect(() => {
@@ -69,6 +91,7 @@ const ListaProduto = () => {
                 titulo={item.nome}
                 preco={item.preco}
                 img={item.imagemUrl}
+                onDelete={confirmarExcluir}
               />
             ))
           ) : (

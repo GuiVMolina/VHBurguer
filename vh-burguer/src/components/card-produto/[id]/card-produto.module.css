@@ -7,6 +7,7 @@
   position: relative;
   border-radius: 10px;
   flex-direction: column;
+  justify-content: center;
   transition: transform 0.1s ease-in-out;
   text-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25);
@@ -44,23 +45,27 @@
   pointer-events: none;
   background: linear-gradient(
     color-mix(in srgb, var(--laranja) 100%, var(--fundo-escuro) 75%) 0%,
-    transparent 35%,
-    transparent 65%,
+    transparent 30%,
+    transparent 70%,
     color-mix(in srgb, var(--vinho) 100%, var(--fundo-escuro) 75%) 100%
   );
   color: white;
 }
 
-.edit_card {
+.info_card {
   position: absolute;
-  bottom: 15px;
   right: 15px;
   display: flex;
   align-items: flex-end;
   flex-direction: column;
   justify-content: space-between;
-  height: 120px;
+  height: 100px;
   z-index: 10;
   pointer-events: auto;
   filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+
+.info_card button {
+  border: 0;
+  background: transparent;
 }

@@ -5,3 +5,5 @@ export function formatarPreco(valor: number) {
     currency: "BRL",
   });
 }
+
+export function formatarTempo(valor: string) {}

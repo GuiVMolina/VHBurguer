@@ -1,79 +1,84 @@
 import Subheader from "@/components/sub-header/subheader";
 import styles from "./detalhe-produto.module.css";
 import Footer from "@/components/footer/footer";
-import { useEffect, useState } from "react";
+import { formatarPreco } from "@/components/utils/formatacao";
 import { listarPorId } from "../../api/produtoService";
+import { erro } from "@/components/utils/toast";
+import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 
-interface Produto {
+type Produto = {
+  produtoID: number;
   nome: string;
   descricao: string;
   preco: number;
-  imagemUrl: string;
-}
+  img: string;
+  categorias: string[];
+};
 
-const DetalheProduto = () => {
-  const [produto, setProduto] = useState<Produto>();
-
-  const { id } = useParams();
+const DetalheProduto = ({} : Produto) => {
+  const [produto, setProduto] = useState<Produto | null>(null);
+  const params = useParams();
+  const id = params?.id;
 
   async function listarProduto() {
     try {
       const response = await listarPorId(Number(id));
       setProduto(response);
     } catch (error: any) {
-      console.log(error.message);
+      erro(error.message);
     }
   }
 
   useEffect(() => {
+    if (!id) return;
     listarProduto();
-  }, []);
+  }, [id]);
 
   return (
     <>
       <Subheader />
-      <section id={styles.detalhe}>
+      <main className="min_height" id={styles.detalhe}>
         <div className={`${styles.container} layout_guide`}>
-          <div id={styles.card}>
-            <h1 className="title3">Detalhes do produto</h1>
-            <div id={styles.detalhe_1}>
-              <img src="../imgs/hamburguer_alcatra_com_bacon.png" />
-              <div id={styles.detalhe_2}>
-                <div className={styles.detalhe_info}>
-                  <div>
-                    <h3>Descrição</h3>
-                    <p>
-                      Um pão brioche macio segura a fera: duas (ou três) carnes
-                      altas e suculentas, queijo cheddar derretido escorrendo
-                      pelas laterais, bacon crocante, cebola caramelizada no
-                      ponto adocicado, alface fresca, tomate e um molho especial
-                      intenso que amarra tudo. Para completar o ataque, uma
-                      camada extra de onion rings ou molho defumado que
-                      transforma cada mordida numa explosão.
-                    </p>
-                  </div>
-                </div>
-                <div className={styles.detalhe_info}>
-                  <div>
-                    <h3>Preço (R$)</h3>
-                    <p>
-                      <s>R$45,00</s> R$35,00
-                    </p>
-                  </div>
-                  <div>
-                    <h3>Categoria</h3>
-                    <ul>
-                      <li>Premium</li>
-                      <li>Artesanal</li>
-                    </ul>
+          {produto ? (
+            <>
+              <div id={styles.card}>
+                <h1 className="title3">{produto.nome}</h1>
+                <div id={styles.detalhe_1}>
+                  {/* 1. Imagem */}
+                  <img src={produto.img} alt={produto.nome} />
+
+                  <div id={styles.detalhe_2}>
+                    <div className={styles.detalhe_info}>
+                      <h3>Descrição</h3>
+                      {/* 2. Descrição */}
+                      <p>{produto.descricao}</p>
+                    </div>
+                    <div className={styles.detalhe_info}>
+                      <div>
+                        <h3>Preço (R$)</h3>
+                        {/* 3. Preço */}
+                        <p>{formatarPreco(produto.preco)}</p>
+                      </div>
+                      <div>
+                        <h3>Categoria</h3>
+                        {/* 4. Categorias */}
+                        <ul>
+                          {produto.categorias?.map((cat) => (
+                            <li>{cat}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </>
+          ) : (
+            <p>Carregando produto...</p>
+          )}
         </div>
-      </section>
+      </main>
       <Footer />
     </>
   );
