@@ -4,6 +4,7 @@ import Link from "next/link";
 import { excluirProduto, listarProduto } from "@/pages/api/produtoService";
 import { erro, notificacao, toastConfirmarExcluir } from "../utils/toast";
 import { useEffect, useState } from "react";
+import { verificarAutenticacao } from "../utils/auth";
 
 interface Produto {
   produtoID: number;
@@ -21,6 +22,9 @@ const ListaProduto = () => {
 
   // Salvar o que for escrito pelo usuário
   const [pesquisa, setPesquisa] = useState("");
+
+  // Salva a informação do usuário logado
+  const [estaAutenticado, setEstaAtutenticado] = useState(false);
 
   async function listar() {
     try {
@@ -52,6 +56,7 @@ const ListaProduto = () => {
   }
 
   useEffect(() => {
+    setEstaAtutenticado(verificarAutenticacao());
     listar();
   }, []);
 
@@ -86,7 +91,7 @@ const ListaProduto = () => {
           <div id={styles.caixa_pesquisa}>
             <label htmlFor="pesquisa">Pesquisa</label>
             <input
-            className="select"
+              className="select"
               type="text"
               name="pesquisa"
               id=""
@@ -106,22 +111,25 @@ const ListaProduto = () => {
             </Link>
           </div>
         </div>
-        <div id={styles.cards_produtos}>
-          {produtosFiltrados.length > 0 ? (
-            produtosFiltrados.map((item) => (
-              <CardProduto
-                key={item.produtoID}
-                produtoID={item.produtoID}
-                titulo={item.nome}
-                preco={item.preco}
-                img={item.imagemUrl}
-                onDelete={confirmarExcluir}
-              />
-            ))
-          ) : (
-            <p>Carregando produtos...</p>
-          )}
-        </div>
+        {estaAutenticado && (
+          <div id={styles.cards_produtos}>
+            {produtosFiltrados.length > 0 ? (
+              produtosFiltrados.map((item) => (
+                <CardProduto
+                  key={item.produtoID}
+                  produtoID={item.produtoID}
+                  titulo={item.nome}
+                  preco={item.preco}
+                  img={item.imagemUrl}
+                  onDelete={confirmarExcluir}
+                  estaLogado={estaAutenticado}
+                />
+              ))
+            ) : (
+              <p>Carregando produtos...</p>
+            )}
+          </div>
+        )}
       </div>
     </>
   );

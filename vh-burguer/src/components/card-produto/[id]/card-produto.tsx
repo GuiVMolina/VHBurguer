@@ -10,6 +10,7 @@ type ProdutoProps = {
 
   // Criando uma props que recebe uma função
   onDelete: (produtoId: number) => void;
+  estaLogado: boolean;
 };
 
 const CardProduto = ({
@@ -18,6 +19,7 @@ const CardProduto = ({
   img,
   produtoID,
   onDelete,
+  estaLogado,
 }: ProdutoProps) => {
   return (
     <div className={styles.card}>
@@ -29,18 +31,21 @@ const CardProduto = ({
           <h4 className="subtitle">{formatarPreco(preco)}</h4>
         </div>
       </Link>
-
-      <div className={styles.info_card}>
-        <Link href={`/historico/${produtoID}`}>
-          <img className="icon" src="/imgs/info.png" alt="Informação" />
-        </Link>
-        <button onClick={() => onDelete(produtoID)}>
-          <img className="icon" src="/imgs/lixeira.png" alt="Excluir" />
-        </button>
-        <Link href={`/produto?id=${produtoID}`}>
-          <img className="icon" src="/imgs/editar.png" alt="Editar" />
-        </Link>
-      </div>
+      {estaLogado && (
+        <>
+          <div className={styles.info_card}>
+            <Link href={`/historico/${produtoID}`}>
+              <img className="icon" src="/imgs/info.png" alt="Informação" />
+            </Link>
+            <button onClick={() => onDelete(produtoID)}>
+              <img className="icon" src="/imgs/lixeira.png" alt="Excluir" />
+            </button>
+            <Link href={`/produto?id=${produtoID}`}>
+              <img className="icon" src="/imgs/editar.png" alt="Editar" />
+            </Link>
+          </div>
+        </>
+      )}
     </div>
   );
 };

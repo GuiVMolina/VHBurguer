@@ -12,6 +12,7 @@ import {
 } from "../api/produtoService";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { verificarAutenticacao } from "@/components/utils/auth";
 
 interface Categoria {
   categoriaID: number;
@@ -27,6 +28,8 @@ const Produto = () => {
   const [categoriasSelecionadas, setCategoriasSelecionadas] = useState<
     number[]
   >([]);
+
+  const [estaAutenticado, setEstaAtutenticado] = useState(false);
 
   const router = useRouter();
   const { id } = router.query;
@@ -58,12 +61,22 @@ const Produto = () => {
     }
   }
 
+  // Quando o produto for renderizado, a função listarCategoriaProduto acontece
   useEffect(() => {
-    listarCategoriaProduto();
-    if (id) {
-      carregarInformacoes();
+    if (!verificarAutenticacao()) {
+      router.push("/home");
+    } else {
+      setEstaAtutenticado(true);
     }
-  }, [id]);
+
+    listarCategoriaProduto();
+    carregarInformacoes();
+  }, []);
+
+  // A tela de produto não será renderizada sem autenticação
+  if (!estaAutenticado) {
+    return null;
+  }
 
   async function salvarProduto(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
