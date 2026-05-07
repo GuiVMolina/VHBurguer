@@ -19,6 +19,9 @@ const ListaProduto = () => {
   // Salvar informações de filtro
   const [ordem, setOrdem] = useState("todos");
 
+  // Salvar o que for escrito pelo usuário
+  const [pesquisa, setPesquisa] = useState("");
+
   async function listar() {
     try {
       const lista = await listarProduto();
@@ -53,14 +56,18 @@ const ListaProduto = () => {
   }, []);
 
   // sort - Organizar/ordenar o array
-  const produtosFiltrados = produtos.sort((a, b) => {
-    if (ordem === "menor_valor") {
-      return a.preco - b.preco;
-    } else if (ordem === "maior_valor") {
-      return b.preco - a.preco;
-    }
-    return 0;
-  });
+  const produtosFiltrados = produtos
+    .filter((produto) =>
+      produto.nome.toLowerCase().includes(pesquisa.toLowerCase()),
+    )
+    .sort((a, b) => {
+      if (ordem === "menor_valor") {
+        return a.preco - b.preco;
+      } else if (ordem === "maior_valor") {
+        return b.preco - a.preco;
+      }
+      return a.produtoID - b.produtoID;
+    });
 
   return (
     <>
@@ -76,13 +83,17 @@ const ListaProduto = () => {
             <option value="maior_valor">Maior Valor</option>
           </select>
 
-          <div>
+          <div id={styles.caixa_pesquisa}>
             <label htmlFor="pesquisa">Pesquisa</label>
             <input
+            className="select"
               type="text"
               name="pesquisa"
               id=""
               placeholder="Digite o nome do produto"
+              onChange={(e) => {
+                setPesquisa(e.target.value);
+              }}
             />
           </div>
 

@@ -21,6 +21,12 @@
   gap: 5px;
 }
 
+#caixa_pesquisa {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 #cards_produtos {
   display: grid;
   width: 75%;

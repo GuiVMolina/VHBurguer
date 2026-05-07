@@ -249,11 +249,11 @@ html[data-scroll-behavior="smooth"] {
   border: none;
   padding: 10px;
   font-weight: 500;
+  color: var(--vinho);
   align-items: center;
   border-radius: 10px;
   text-decoration: none;
   justify-content: center;
-  color: var(--vinho);
   background-color: var(--laranja);
   font-size: var(--tamanho-texto-btn);
   transition: background-color 0.1s ease-in-out;
@@ -269,6 +269,19 @@ html[data-scroll-behavior="smooth"] {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.select {
+  border: 0;
+  width: 75%;
+  padding: 4px;
+  border-radius: 10px;
+  outline: transparent;
+  transition: outline 0.1s ease-in-out;
+}
+
+.select:focus {
+  outline: 2px solid var(--laranja);
 }
 
 .checkbox_label {
@@ -305,21 +318,21 @@ html[data-scroll-behavior="smooth"] {
   width: 100%;
   display: flex;
   padding: 10px 0;
+  justify-content: center;
   color: var(--fonte-clara);
   background-color: var(--vinho);
-  justify-content: center;
   font-size: var(--tamanho-titulo-card);
 }
 
 .title4 {
+  width: 100%;
   display: flex;
   font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   justify-content: center;
   color: var(--fonte-clara);
   font-size: var(--tamanho-sub-titulo-card);
-  width: 100%;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 .subtitle {
