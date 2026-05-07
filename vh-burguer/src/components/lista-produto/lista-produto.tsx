@@ -2,19 +2,22 @@ import CardProduto from "../card-produto/[id]/card-produto";
 import styles from "./lista-produto.module.css";
 import Link from "next/link";
 import { excluirProduto, listarProduto } from "@/pages/api/produtoService";
-import { useEffect, useState } from "react";
 import { erro, notificacao, toastConfirmarExcluir } from "../utils/toast";
+import { useEffect, useState } from "react";
 
 interface Produto {
   produtoID: number;
-  imagemUrl: string;
   nome: string;
   preco: number;
+  imagemUrl: string;
   statusProduto: boolean;
 }
 
 const ListaProduto = () => {
   const [produtos, setProdutos] = useState<Produto[]>([]);
+
+  // Salvar informações de filtro
+  const [ordem, setOrdem] = useState("todos");
 
   async function listar() {
     try {
@@ -49,29 +52,39 @@ const ListaProduto = () => {
     listar();
   }, []);
 
+  // sort - Organizar/ordenar o array
+  const produtosFiltrados = produtos.sort((a, b) => {
+    if (ordem === "menor_valor") {
+      return a.preco - b.preco;
+    } else if (ordem === "maior_valor") {
+      return b.preco - a.preco;
+    }
+    return 0;
+  });
+
   return (
     <>
       <div id={styles.cardapio}>
         <div id={styles.campo_btn}>
-          <button className="btn1">
-            <span>Filtrar</span>
-            <svg
-              id={styles.btn_filtrar_icon}
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                d="M4 6h16M4 12h16M4 18h16"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <circle cx="9" cy="6" r="2" fill="currentColor" />
-              <circle cx="15" cy="12" r="2" fill="currentColor" />
-              <circle cx="11" cy="18" r="2" fill="currentColor" />
-            </svg>
-          </button>
+          <select
+            className="btn1"
+            value={ordem}
+            onChange={(e) => setOrdem(e.target.value)}
+          >
+            <option value="todos">Todos</option>
+            <option value="menor_valor">Menor Valor</option>
+            <option value="maior_valor">Maior Valor</option>
+          </select>
+
+          <div>
+            <label htmlFor="pesquisa">Pesquisa</label>
+            <input
+              type="text"
+              name="pesquisa"
+              id=""
+              placeholder="Digite o nome do produto"
+            />
+          </div>
 
           <div id={styles.btn_cardapio}>
             <Link className="btn1" href="/historico">
@@ -83,8 +96,8 @@ const ListaProduto = () => {
           </div>
         </div>
         <div id={styles.cards_produtos}>
-          {produtos.length > 0 ? (
-            produtos.map((item) => (
+          {produtosFiltrados.length > 0 ? (
+            produtosFiltrados.map((item) => (
               <CardProduto
                 key={item.produtoID}
                 produtoID={item.produtoID}
