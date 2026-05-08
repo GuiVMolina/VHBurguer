@@ -1,5 +1,6 @@
 #cardapio {
   gap: 20px;
+  width: 90%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -12,8 +13,10 @@
 }
 
 #campo_btn {
-  width: 75%;
+  gap: 10px;
+  width: 80%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -21,7 +24,14 @@
   gap: 5px;
 }
 
+#campo_pesquisa {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+}
+
 #caixa_pesquisa {
+  gap: 5px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -35,7 +45,7 @@
 
 #cards_produtos {
   gap: 40px;
-  width: 75%;
+  width: 80%;
   display: grid;
   max-width: 75vw;
   justify-content: center;
@@ -47,13 +57,20 @@
   display: flex;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 960px) {
   #btn_cardapio {
     flex-direction: column;
   }
 
   #campo_btn {
     gap: 10px;
+    align-items: normal;
+    flex-direction: column;
+  }
+
+  #campo_pesquisa {
+    gap: 10px;
+    align-items: normal;
     flex-direction: column-reverse;
   }
 }

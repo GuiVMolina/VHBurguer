@@ -78,28 +78,30 @@ const ListaProduto = () => {
     <>
       <div id={styles.cardapio}>
         <div id={styles.campo_btn}>
-          <select
-            className="btn1"
-            value={ordem}
-            onChange={(e) => setOrdem(e.target.value)}
-          >
-            <option value="todos">Todos</option>
-            <option value="menor_valor">Menor Valor</option>
-            <option value="maior_valor">Maior Valor</option>
-          </select>
+          <div id={styles.campo_pesquisa}>
+            <select
+              className="btn1"
+              value={ordem}
+              onChange={(e) => setOrdem(e.target.value)}
+            >
+              <option value="todos">Todos</option>
+              <option value="menor_valor">Menor Valor</option>
+              <option value="maior_valor">Maior Valor</option>
+            </select>
 
-          <div id={styles.caixa_pesquisa}>
-            <label htmlFor="pesquisa">Pesquisa</label>
-            <input
-              className="select"
-              type="text"
-              name="pesquisa"
-              id=""
-              placeholder="Digite o nome do produto"
-              onChange={(e) => {
-                setPesquisa(e.target.value);
-              }}
-            />
+            <div id={styles.caixa_pesquisa}>
+              <label htmlFor="pesquisa">Pesquisa</label>
+              <input
+                className="select"
+                type="text"
+                name="pesquisa"
+                id=""
+                placeholder="Busque seu produto..."
+                onChange={(e) => {
+                  setPesquisa(e.target.value);
+                }}
+              />
+            </div>
           </div>
           {estaAutenticado && (
             <div id={styles.btn_cardapio}>
@@ -107,28 +109,28 @@ const ListaProduto = () => {
                 Histórico
               </Link>
               <Link className="btn1" href="/produto">
-                Adicionar produto
+                Novo produto
               </Link>
             </div>
           )}
         </div>
-          <div id={styles.cards_produtos}>
-            {produtosFiltrados.length > 0 ? (
-              produtosFiltrados.map((item) => (
-                <CardProduto
-                  key={item.produtoID}
-                  produtoID={item.produtoID}
-                  titulo={item.nome}
-                  preco={item.preco}
-                  img={item.imagemUrl}
-                  onDelete={confirmarExcluir}
-                  estaLogado={estaAutenticado}
-                />
-              ))
-            ) : (
-              <p>Carregando produtos...</p>
-            )}
-          </div>
+        <div id={styles.cards_produtos}>
+          {produtosFiltrados.length > 0 ? (
+            produtosFiltrados.map((item) => (
+              <CardProduto
+                key={item.produtoID}
+                produtoID={item.produtoID}
+                titulo={item.nome}
+                preco={item.preco}
+                img={item.imagemUrl}
+                onDelete={confirmarExcluir}
+                estaLogado={estaAutenticado}
+              />
+            ))
+          ) : (
+            <p>Carregando produtos...</p>
+          )}
+        </div>
       </div>
     </>
   );

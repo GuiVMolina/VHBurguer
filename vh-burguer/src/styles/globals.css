@@ -280,10 +280,6 @@ html[data-scroll-behavior="smooth"] {
   transition: outline 0.1s ease-in-out;
 }
 
-.select:focus {
-  outline: 2px solid var(--laranja);
-}
-
 .checkbox_label {
   margin-left: 8px;
 }

@@ -62,15 +62,15 @@ const Produto = () => {
 
   // Quando o produto for renderizado, a função listarCategoriaProduto acontece
   useEffect(() => {
+    if (!router.isReady) return;
     if (!verificarAutenticacao()) {
       router.push("/home");
-    } else {
-      setEstaAtutenticado(true);
+      return;
     }
-
-    listarCategoriaProduto();
+    setEstaAtutenticado(true);
     carregarInformacoes();
-  }, []);
+    listarCategoriaProduto();
+  }, [router.isReady, id]);
 
   // A tela de produto não será renderizada sem autenticação
   if (!estaAutenticado) {
