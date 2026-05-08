@@ -101,17 +101,17 @@ const ListaProduto = () => {
               }}
             />
           </div>
-
-          <div id={styles.btn_cardapio}>
-            <Link className="btn1" href="/historico">
-              Histórico
-            </Link>
-            <Link className="btn1" href="/produto">
-              Adicionar produto
-            </Link>
-          </div>
+          {estaAutenticado && (
+            <div id={styles.btn_cardapio}>
+              <Link className="btn1" href="/historico">
+                Histórico
+              </Link>
+              <Link className="btn1" href="/produto">
+                Adicionar produto
+              </Link>
+            </div>
+          )}
         </div>
-        {estaAutenticado && (
           <div id={styles.cards_produtos}>
             {produtosFiltrados.length > 0 ? (
               produtosFiltrados.map((item) => (
@@ -129,7 +129,6 @@ const ListaProduto = () => {
               <p>Carregando produtos...</p>
             )}
           </div>
-        )}
       </div>
     </>
   );

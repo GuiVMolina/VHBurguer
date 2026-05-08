@@ -17,7 +17,7 @@
   justify-content: space-between;
 }
 
-#campo_btn button{
+#campo_btn button {
   gap: 5px;
 }
 
@@ -27,12 +27,18 @@
   flex-direction: column;
 }
 
+#caixa_pesquisa input {
+  width: 100%;
+  padding: 10px 5px;
+  text-align: center;
+}
+
 #cards_produtos {
-  display: grid;
-  width: 75%;
-  max-width: 75vw;
   gap: 40px;
-  justify-content: center; 
+  width: 75%;
+  display: grid;
+  max-width: 75vw;
+  justify-content: center;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
@@ -46,7 +52,8 @@
     flex-direction: column;
   }
 
-  #campo_btn span {
-    display: none;
+  #campo_btn {
+    gap: 10px;
+    flex-direction: column-reverse;
   }
 }

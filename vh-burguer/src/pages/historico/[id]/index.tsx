@@ -2,10 +2,11 @@ import DataTable from "@/components/data-table/data-table";
 import Subheader from "@/components/sub-header/subheader";
 import Footer from "@/components/footer/footer";
 import styles from "./../historico.module.css";
+import { verificarAutenticacao } from "@/components/utils/auth";
 import { listarProdutoId } from "@/pages/api/logProdutoService";
+import { useParams, useRouter } from "next/navigation";
 import { erro } from "@/components/utils/toast";
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
 
 type HistoricoAlteracao = {
   logID: number;
@@ -16,6 +17,10 @@ type HistoricoAlteracao = {
 
 const Historico = () => {
   const [historico, setHistorico] = useState<HistoricoAlteracao[]>([]);
+
+  const [estaAutenticado, setEstaAtutenticado] = useState(false);
+
+  const router = useRouter();
 
   const params = useParams();
   const id = params?.id;
@@ -30,9 +35,20 @@ const Historico = () => {
   }
 
   useEffect(() => {
+    if (!verificarAutenticacao()) {
+      router.push("/home");
+    } else {
+      setEstaAtutenticado(true);
+    }
+
     if (!id) return;
     listarHistorico();
   });
+
+  // A tela de histórico não será renderizada sem autenticação
+  if (!estaAutenticado) {
+    return null;
+  }
 
   return (
     <>

@@ -2,17 +2,16 @@ import Subheader from "@/components/sub-header/subheader";
 import Footer from "@/components/footer/footer";
 import styles from "./produto.module.css";
 import Link from "next/link";
-
+import { verificarAutenticacao } from "@/components/utils/auth";
 import { erro, notificacao } from "@/components/utils/toast";
 import { listarCategoria } from "../api/categoriaService";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import {
   cadastrarProduto,
   editarProduto,
   listarPorId,
 } from "../api/produtoService";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import { verificarAutenticacao } from "@/components/utils/auth";
 
 interface Categoria {
   categoriaID: number;

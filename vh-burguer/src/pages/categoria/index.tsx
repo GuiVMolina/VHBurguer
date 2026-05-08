@@ -3,12 +3,18 @@ import Footer from "@/components/footer/footer";
 import styles from "./categoria.module.css";
 import Link from "next/link";
 
+import { verificarAutenticacao } from "@/components/utils/auth";
 import { cadastrarCategoria } from "../api/categoriaService";
 import { erro, notificacao } from "@/components/utils/toast";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const Categoria = () => {
   const [categoria, setCategoria] = useState<string>("");
+
+  const [estaAutenticado, setEstaAtutenticado] = useState(false);
+
+  const router = useRouter();
 
   async function Cadastrar(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -18,6 +24,19 @@ const Categoria = () => {
     } catch (error: any) {
       erro(error.message);
     }
+  }
+
+  useEffect(() => {
+    if (!verificarAutenticacao()) {
+      router.push("/home");
+    } else {
+      setEstaAtutenticado(true);
+    }
+  });
+
+  // A tela de categoria não será renderizada sem autenticação
+  if (!estaAutenticado) {
+    return null;
   }
 
   return (
