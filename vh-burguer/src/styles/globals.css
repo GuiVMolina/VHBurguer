@@ -3,12 +3,13 @@
    ========================================================================== */
 :root {
   /* Cores */
-  --vinho: #451201;
-  --laranja: #ffa300;
-  --fonte-clara: #fff;
-  --fonte-escura: #000;
-  --fundo-claro: #f1f1f1;
-  --fundo-escuro: #232122;
+  --vinho: hsl(15, 95%, 15%);
+  --laranja: hsl(40, 100%, 50%);
+  --vermelho: hsl(345, 100%, 50%);
+  --fonte-clara: hsl(0, 0%, 100%);
+  --fonte-escura: hsl(0, 0%, 0%);
+  --fundo-claro: hsl(0, 0%, 95%);
+  --fundo-escuro: hsl(330, 5%, 10%);
 
   /* Tipografia */
   --tamanho-titulo: 3rem;
@@ -493,18 +494,53 @@ main {
 /* ==========================================================================
    10. ESTILIZAÇÃO DE TERCEIROS (TOASTIFY)
    ========================================================================== */
-.Toastify__toast--success {
-  font-weight: bold;
-  color: var(--laranja) !important;
-  background-color: #fff !important;
+.Toastify__toast {
+  font-family: var(--font-fredoka), sans-serif !important;
+  font-weight: 500;
+  border-radius: 12px !important;
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.05),
+    0 8px 16px -8px rgba(0, 0, 0, 0.05) !important;
+  padding: 14px 18px !important;
+  align-items: center !important;
 }
 
+.Toastify__close-button {
+  align-self: center !important;
+  color: #a3a3a3 !important;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.Toastify__close-button:hover {
+  opacity: 1;
+}
+
+/* --- SUCESSO --- */
+.Toastify__toast--success {
+  color: var(--laranja) !important;
+  background-color: #ffffff !important;
+}
 .Toastify__progress-bar--success {
   background: var(--laranja) !important;
+  height: 4px !important;
 }
-
 .Toastify__toast--success .Toastify__toast-icon svg {
   fill: var(--laranja) !important;
+}
+
+/* --- ERRO --- */
+.Toastify__toast--error {
+  color: var(--vermelho) !important;
+  background-color: #ffffff !important;
+  border-left: 4px solid var(--vermelho) !important;
+}
+.Toastify__progress-bar--error {
+  background: var(--vermelho) !important;
+  height: 4px !important;
+}
+.Toastify__toast--error .Toastify__toast-icon svg {
+  fill: var(--vermelho) !important;
 }
 
 /* ==========================================================================

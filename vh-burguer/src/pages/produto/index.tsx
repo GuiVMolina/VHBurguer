@@ -201,7 +201,7 @@ const Produto = () => {
                 />
               </div>
 
-              <div className="row">
+              <div className="row to_column">
                 <Link className="btn1" href="/historico">
                   Histórico
                 </Link>
