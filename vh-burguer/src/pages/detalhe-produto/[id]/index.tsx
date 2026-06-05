@@ -12,11 +12,11 @@ type Produto = {
   nome: string;
   descricao: string;
   preco: number;
-  img: string;
+  imagemUrl: string;
   categorias: string[];
 };
 
-const DetalheProduto = ({} : Produto) => {
+const DetalheProduto = () => {
   const [produto, setProduto] = useState<Produto | null>(null);
   const params = useParams();
   const id = params?.id;
@@ -38,34 +38,38 @@ const DetalheProduto = ({} : Produto) => {
   return (
     <>
       <Subheader />
-      <main className="min_height" id={styles.detalhe}>
-        <div className={`${styles.container} layout_guide`}>
+      <main className="min_height">
+        <div className="container column">
           {produto ? (
             <>
-              <div id={styles.card}>
+              <div className={styles.card}>
                 <h1 className="title3">{produto.nome}</h1>
-                <div id={styles.detalhe_1}>
-                  {/* 1. Imagem */}
-                  <img src={produto.img} alt={produto.nome} />
+                <div className={styles.detalhe}>
+                  <img
+                    className={styles.imagem_produto}
+                    src={produto.imagemUrl || "/imgs/foto_de_hamburgueres.png"}
+                    alt={produto.nome}
+                    onError={(event) => {
+                      event.currentTarget.src =
+                        "/imgs/foto_de_hamburgueres.png";
+                    }}
+                  />
 
-                  <div id={styles.detalhe_2}>
-                    <div className={styles.detalhe_info}>
-                      <h3>Descrição</h3>
-                      {/* 2. Descrição */}
+                  <div className="column">
+                    <div>
+                      <h3 className="title2 to_start">Descrição</h3>
                       <p>{produto.descricao}</p>
                     </div>
-                    <div className={styles.detalhe_info}>
-                      <div>
-                        <h3>Preço (R$)</h3>
-                        {/* 3. Preço */}
+                    <div className="row to_column">
+                      <div className="full_width">
+                        <h3 className="title2 to_start">Preço (R$)</h3>
                         <p>{formatarPreco(produto.preco)}</p>
                       </div>
-                      <div>
-                        <h3>Categoria</h3>
-                        {/* 4. Categorias */}
+                      <div className="full_width">
+                        <h3 className="title2 to_start">Categoria</h3>
                         <ul>
                           {produto.categorias?.map((cat) => (
-                            <li>{cat}</li>
+                            <li key={cat}>{cat}</li>
                           ))}
                         </ul>
                       </div>

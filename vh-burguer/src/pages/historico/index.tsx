@@ -49,9 +49,9 @@ const HistoricoGeral = () => {
   return (
     <>
       <Subheader />
-      <main className="min_height" id={styles.historico}>
-        <div className={`${styles.container} layout_guide`}>
-          <div id={styles.card}>
+      <main className="min_height">
+        <div className="container center">
+          <div className="infocard">
             <h1 className="title2">Histórico Geral</h1>
 
             {historico === null ? (
@@ -59,7 +59,7 @@ const HistoricoGeral = () => {
             ) : historico.length === 0 ? (
               <p>Não existem registros de alterações no sistema.</p>
             ) : (
-              <table id={styles.info}>
+              <table className="column">
                 <thead id={styles.detalhe_info}>
                   <tr>
                     <th>Data da alteração</th>
@@ -67,8 +67,8 @@ const HistoricoGeral = () => {
                     <th>Preço Anterior</th>
                   </tr>
                 </thead>
-                <tbody id={styles.line}></tbody>
-                <tfoot id={styles.data_table}>
+                <tbody className="line"></tbody>
+                <tfoot className="column">
                   {historico.map((item) => (
                     <DataTable
                       key={item.logID}

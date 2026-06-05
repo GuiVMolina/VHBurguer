@@ -1,6 +1,5 @@
 import Subheader from "@/components/sub-header/subheader";
 import Footer from "@/components/footer/footer";
-import styles from "./categoria.module.css";
 import Link from "next/link";
 
 import { verificarAutenticacao } from "@/components/utils/auth";
@@ -42,30 +41,28 @@ const Categoria = () => {
   return (
     <>
       <Subheader />
-      <main className="min_height" id={styles.categoria}>
-        <div className={`${styles.container} layout_guide`}>
-          <div className="card">
-            <h1 className="title2">Criar categoria</h1>
-            <form className="form" onSubmit={Cadastrar}>
-              <div className="input_campo">
-                <label className="label">Nome da categoria</label>
-                <input
-                  className="input"
-                  type="text"
-                  name="nome"
-                  placeholder="Especial"
-                  onChange={(e) => setCategoria(e.target.value)}
-                  required
-                />
-              </div>
-              <div id={styles.botoes}>
-                <Link href="/produto" className="btn1">
-                  Adicionar Produto
-                </Link>
-                <button className="btn2">Salvar</button>
-              </div>
-            </form>
-          </div>
+      <main className="container column min_height">
+        <div className="card">
+          <h1 className="title2">Criar categoria</h1>
+          <form className="form" onSubmit={Cadastrar}>
+            <div className="input_campo">
+              <label className="label">Nome da categoria</label>
+              <input
+                className="input"
+                type="text"
+                name="nome"
+                placeholder="Especial"
+                onChange={(e) => setCategoria(e.target.value)}
+                required
+              />
+            </div>
+            <div className="row">
+              <Link href="/produto" className="btn1">
+                Adicionar Produto
+              </Link>
+              <button className="btn2">Salvar</button>
+            </div>
+          </form>
         </div>
       </main>
       <Footer />

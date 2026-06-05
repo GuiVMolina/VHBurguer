@@ -10,14 +10,14 @@ const Home = () => {
       <main>
         {/* Banner */}
         <section className={styles.banner}>
-          <div className={`${styles.container} layout_guide`}>
-            <h1 id={styles.title}>Bem-vindo ao VH Burguer</h1>
+          <div className="container column">
+            <h1 className="title1">Bem-vindo ao VH Burguer</h1>
             <img
               id={styles.banner_img}
               src="../imgs/foto_de_hamburgueres.png"
               alt=""
             />
-            <div id={styles.botoes}>
+            <div className="side_by_side">
               <a href="#unidades" className="btn1">
                 Chamar atendente
               </a>
@@ -30,7 +30,7 @@ const Home = () => {
 
         {/* Destaques */}
         <section className={styles.destaques} id="destaques">
-          <div className={`${styles.container} layout_guide`}>
+          <div className="container">
             <div className={styles.grid}>
               <div className={styles.item}>
                 <img
@@ -73,17 +73,17 @@ const Home = () => {
 
         {/* Cardápio */}
         <section className={styles.cardapio} id="cardapio">
-          <div className={`${styles.container} layout_guide`}>
-            <h2>Cardápio</h2>
+          <div className="container column">
+            <h2 className="title2">Cardápio</h2>
             <ListaProduto />
           </div>
         </section>
 
         {/* Unidades */}
         <section className={styles.unidades} id="unidades">
-          <div className={`${styles.container} layout_guide`}>
-            <div id={styles.informacoes}>
-              <h3>Unidades</h3>
+          <div className="container center">
+            <div className="column">
+              <h3 className="title4">Unidades</h3>
               <ul>
                 <li>Centro – Av. Aurora, 742</li>
                 <li>Jardim – Av. das Palmeiras, 1280</li>

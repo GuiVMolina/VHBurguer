@@ -1,6 +1,5 @@
 import Subheader from "@/components/sub-header/subheader";
 import Footer from "@/components/footer/footer";
-import styles from "./produto.module.css";
 import Link from "next/link";
 import { verificarAutenticacao } from "@/components/utils/auth";
 import { erro, notificacao } from "@/components/utils/toast";
@@ -104,8 +103,8 @@ const Produto = () => {
   return (
     <>
       <Subheader />
-      <main className="min_height" id={styles.produto}>
-        <div className={`${styles.container} layout_guide`}>
+      <main className="min_height">
+        <div className="container center">
           <div className="card">
             <h1 className="title2">
               {telaEditar ? "Editar" : "Criar"} produto
@@ -116,6 +115,7 @@ const Produto = () => {
                 <input
                   className="input"
                   type="text"
+                  name="nome"
                   value={nome}
                   onChange={(e) => setNome(e.target.value)}
                   required
@@ -124,9 +124,9 @@ const Produto = () => {
 
               <div className="input_campo">
                 <label className="label">Descrição</label>
-                <input
-                  className="input"
-                  type="text"
+                <textarea
+                  className="textarea"
+                  name="descricao"
                   value={descricao}
                   onChange={(e) => setDescricao(e.target.value)}
                   required
@@ -138,6 +138,7 @@ const Produto = () => {
                 <input
                   className="input"
                   type="text"
+                  name="preco"
                   value={preco}
                   onChange={(e) => setPreco(e.target.value)}
                   required
@@ -151,6 +152,7 @@ const Produto = () => {
                     <div key={item.categoriaID}>
                       <input
                         type="checkbox"
+                        name="categoria"
                         id={`cat-${item.categoriaID}`}
                         value={item.categoriaID}
                         checked={categoriasSelecionadas.includes(
@@ -189,6 +191,7 @@ const Produto = () => {
                 <input
                   className="input_file"
                   type="file"
+                  name="imagem"
                   required={!telaEditar}
                   onChange={(e) => {
                     if (e.target.files && e.target.files[0]) {
@@ -198,7 +201,7 @@ const Produto = () => {
                 />
               </div>
 
-              <div id={styles.botoes}>
+              <div className="row">
                 <Link className="btn1" href="/historico">
                   Histórico
                 </Link>

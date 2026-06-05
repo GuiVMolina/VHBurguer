@@ -3,8 +3,8 @@ import styles from "./lista-produto.module.css";
 import Link from "next/link";
 import { excluirProduto, listarProduto } from "@/pages/api/produtoService";
 import { erro, notificacao, toastConfirmarExcluir } from "../utils/toast";
-import { useEffect, useState } from "react";
 import { verificarAutenticacao } from "../utils/auth";
+import { useEffect, useState } from "react";
 
 interface Produto {
   produtoID: number;
@@ -76,11 +76,11 @@ const ListaProduto = () => {
 
   return (
     <>
-      <div id={styles.cardapio}>
-        <div id={styles.campo_btn}>
-          <div id={styles.campo_pesquisa}>
+      <div className="full_width">
+        <div className="row to_column">
+          <div className="side_by_side to_reverse_column">
             <select
-              className="btn1"
+              className="select"
               value={ordem}
               onChange={(e) => setOrdem(e.target.value)}
             >
@@ -89,10 +89,10 @@ const ListaProduto = () => {
               <option value="maior_valor">Maior Valor</option>
             </select>
 
-            <div id={styles.caixa_pesquisa}>
-              <label htmlFor="pesquisa">Pesquisa</label>
+            <div>
+              {/* <label htmlFor="pesquisa">Pesquisa</label> */}
               <input
-                className="select"
+                className="input"
                 type="text"
                 name="pesquisa"
                 id=""
@@ -103,34 +103,35 @@ const ListaProduto = () => {
               />
             </div>
           </div>
+
           {estaAutenticado && (
-            <div id={styles.btn_cardapio}>
+            <div className="side_by_side to_column">
               <Link className="btn1" href="/historico">
                 Histórico
               </Link>
               <Link className="btn1" href="/produto">
-                Novo produto
+                + Produto
               </Link>
             </div>
           )}
         </div>
-        <div id={styles.cards_produtos}>
-          {produtosFiltrados.length > 0 ? (
-            produtosFiltrados.map((item) => (
-              <CardProduto
-                key={item.produtoID}
-                produtoID={item.produtoID}
-                titulo={item.nome}
-                preco={item.preco}
-                img={item.imagemUrl}
-                onDelete={confirmarExcluir}
-                estaLogado={estaAutenticado}
-              />
-            ))
-          ) : (
-            <p>Carregando produtos...</p>
-          )}
-        </div>
+      </div>
+      <div id={styles.cards_produtos}>
+        {produtosFiltrados.length > 0 ? (
+          produtosFiltrados.map((item) => (
+            <CardProduto
+              key={item.produtoID}
+              produtoID={item.produtoID}
+              titulo={item.nome}
+              preco={item.preco}
+              img={item.imagemUrl}
+              onDelete={confirmarExcluir}
+              estaLogado={estaAutenticado}
+            />
+          ))
+        ) : (
+          <p className="text">Carregando produtos...</p>
+        )}
       </div>
     </>
   );

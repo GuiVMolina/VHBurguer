@@ -1,51 +1,6 @@
-#historico {
-  display: flex;
-  padding: 40px 0;
-  justify-content: center;
-  background-color: var(--fundo-claro);
-}
-
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-#info {
-  gap: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-#detalhe_info {
-  width: 100%;
-  font-weight: 500;
-}
-
 #detalhe_info tr {
   display: grid;
   padding: 0 10px;
   align-items: center;
   grid-template-columns: 1fr 1fr 1fr;
-}
-
-#data_table {
-  gap: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-#line {
-  border: 0;
-  width: 100%;
-  height: 1px;
-  background-color: var(--fundo-escuro);
-}
-
-#card {
-  gap: 20px;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
 }

@@ -1,25 +1,16 @@
-#detalhe {
-  display: flex;
-  padding: 40px 0;
-  justify-content: center;
-  background-color: var(--fundo-claro);
-}
-
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#detalhe img {
-  width: 75%;
+.imagem_produto {
+  width: 100%;
+  max-width: 320px;
   border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
-#card {
+.card {
+  width: 100%;
   max-width: 600px;
   overflow: hidden;
-  border-radius: 40px;
+  border-radius: 32px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -27,34 +18,11 @@
   background-color: #fff;
 }
 
-#detalhe_card h1 {
-  text-align: center;
-  padding: 20px;
-  color: var(--fonte-clara);
+.detalhe {
   width: 100%;
-  background-color: var(--vinho);
-}
-
-#detalhe_card h3 {
-  font-weight: 500;
-}
-
-#detalhe_1 {
   padding: 30px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
-}
-
-#detalhe_2 {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 40px;
-}
-
-.detalhe_info {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  gap: 30px;
 }

@@ -1,20 +1,19 @@
 import Link from "next/link";
-import styles from "./footer.module.css";
 
 const Footer = () => {
   return (
     <>
-      <footer id={styles.footer}>
-        <div className={`${styles.container} layout_guide`}>
-          <div id={styles.info}>
+      <footer className="footer">
+        <div className="container column">
+          <div className="row">
             <Link href="/home">
               <img
-                id={styles.logo}
+                className="logo"
                 src="../imgs/logo_footer.svg"
                 alt="Logo do VH Burguer que contém como plano de fundo um hamburguer"
               />
             </Link>
-            <nav id={styles.navbar}>
+            <nav className="navbar">
               <a>
                 <img
                   className="icon"
@@ -45,8 +44,8 @@ const Footer = () => {
               </a>
             </nav>
           </div>
-          <hr id={styles.footer_line}></hr>
-          <p id={styles.footer_text}>
+          <hr className="line2"></hr>
+          <p className="text2">
             Copyright &copy; 2026 VH Burguer | Todos os direitos reservados
           </p>
         </div>

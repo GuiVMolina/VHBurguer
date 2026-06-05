@@ -7,7 +7,6 @@ type ProdutoProps = {
   titulo: string;
   preco: number;
   img: string;
-
   // Criando uma props que recebe uma função
   onDelete: (produtoId: number) => void;
   estaLogado: boolean;

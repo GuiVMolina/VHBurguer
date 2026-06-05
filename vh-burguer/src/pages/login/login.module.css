@@ -1,16 +1,3 @@
-:global(.Toastify__toast--success) {
-  font-weight: bold;
-  background-color: #fff !important;
-}
-
-:global(.Toastify__progress-bar--success) {
-  background: var(--laranja) !important;
-}
-
-:global(.Toastify__toast--success .Toastify__toast-icon svg) {
-  fill: var(--laranja) !important;
-}
-
 #main {
   display: grid;
   min-height: 100vh;
@@ -36,12 +23,6 @@
   width: 100%;
   display: flex;
   align-items: center;
-  flex-direction: column;
-}
-
-.campo_form {
-  gap: 5px;
-  display: flex;
   flex-direction: column;
 }
 

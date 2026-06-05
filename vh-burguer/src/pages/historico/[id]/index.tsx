@@ -53,10 +53,10 @@ const Historico = () => {
   return (
     <>
       <Subheader />
-      <main className="min_height" id={styles.historico}>
-        <div className={`${styles.container} layout_guide`}>
+      <main className="min_height">
+        <div className="container column">
           <h1 className="title2">Histórico de alterações:</h1>
-          <div id={styles.card}>
+          <div className="infocard">
             {historico === null ? (
               <p>Carregando historico</p>
             ) : historico.length === 0 ? (
@@ -70,8 +70,8 @@ const Historico = () => {
                     <th>Preço Anterior</th>
                   </tr>
                 </thead>
-                <tbody id={styles.line}></tbody>
-                <tfoot id={styles.data_table}>
+                <tbody className="line"></tbody>
+                <tfoot className="column">
                   {historico.map((item) => (
                     <DataTable
                       key={item.logID}

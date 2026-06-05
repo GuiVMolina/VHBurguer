@@ -1,13 +1,37 @@
+/* ==========================================================================
+   1. DESIGN SYSTEM (VARIÁVEIS)
+   ========================================================================== */
+:root {
+  /* Cores */
+  --vinho: #451201;
+  --laranja: #ffa300;
+  --fonte-clara: #fff;
+  --fonte-escura: #000;
+  --fundo-claro: #f1f1f1;
+  --fundo-escuro: #232122;
+
+  /* Tipografia */
+  --tamanho-titulo: 3rem;
+  --tamanho-sub-titulo: 2.5rem;
+  --tamanho-titulo-card: 1.5rem;
+  --tamanho-sub-titulo-card: 1.2rem;
+  --tamanho-texto-btn: 1rem;
+  --tamanho-texto-navbar: 1.1rem;
+  --tamanho-texto-input: 1.05rem;
+}
+
+/* ==========================================================================
+   2. CONFIGURAÇÕES GLOBAIS E RESETS
+   ========================================================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: var(--fonte-escura);
   font-family: var(--font-fredoka);
-  user-select: none;
 }
 
 html {
+  color: var(--fonte-escura);
   scrollbar-width: auto;
   scrollbar-color: var(--laranja) var(--vinho);
 }
@@ -16,152 +40,133 @@ html[data-scroll-behavior="smooth"] {
   scroll-behavior: smooth;
 }
 
-:root {
-  --vinho: #451201;
-  --laranja: #ffa300;
-  --fonte-clara: #fff;
-  --fonte-escura: #000;
-  --fundo-claro: #f1f1f1;
-  --fundo-escuro: #232122;
-
-  --tamanho-titulo: 3rem;
-  --tamanho-sub-titulo: 2.5rem;
-  --tamanho-titulo-card: 2rem;
-  --tamanho-sub-titulo-card: 1.2rem;
-  --tamanho-texto-btn: 1rem;
-  --tamanho-texto-navbar: 1.1rem;
-  --tamanho-texto-input: 1.05rem;
-}
-
-/* Estilo completo do Toast de Sucesso */
-.Toastify__toast--success {
-  font-weight: bold;
-  color: var(--laranja) !important;
-  background-color: #fff !important;
-}
-
-/* Barra de progresso laranja */
-.Toastify__progress-bar--success {
-  background: var(--laranja) !important;
-}
-
-/* Ícone laranja */
-.Toastify__toast--success .Toastify__toast-icon svg {
-  fill: var(--laranja) !important;
+main {
+  background-color: var(--fundo-claro);
 }
 
 ::selection {
-  background-color: var(--laranja);
+  background-color: color-mix(in srgb, var(--laranja) 25%, var(--fundo-claro));
 }
 
-.layout_guide {
-  width: 80%;
-}
-
-.btn1 {
-  height: 40px;
-  border: none;
-  padding: 10px;
+/* ==========================================================================
+   3. ESTRUTURA BASE DE LAYOUT
+   ========================================================================== */
+.container {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  min-height: inherit;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  height: 10vh;
+  min-height: 40px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  height: 25vh;
+  min-height: 160px;
+  background-color: var(--vinho);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* ==========================================================================
+   4. COMPONENTES: BOTÕES E INTERAÇÕES
+   ========================================================================== */
+/* Estrutura Base de Botões e Selects */
+.btn1,
+.btn2,
+.btn3,
+.select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  min-width: 120px;
+  max-width: 160px;
+  padding: 10px;
+  border: 0;
+  font-size: var(--tamanho-texto-btn);
   font-weight: 500;
   text-align: center;
-  align-items: center;
-  border-radius: 10px;
   text-decoration: none;
-  justify-content: center;
+  transition:
+    transform 0.1s ease-in-out,
+    box-shadow 0.1s ease-in-out,
+    background-color 0.1s ease-in-out;
+}
+
+/* Efeito Hover Geral */
+.btn1:hover,
+.btn2:hover,
+.btn3:hover,
+.select:hover,
+.link:hover,
+.link2:hover {
+  transform: translateY(-2px);
+}
+
+/* Varições de Botão: Laranja (btn1, btn3, select) */
+.btn1,
+.btn3,
+.select {
   color: var(--vinho);
   background-color: var(--laranja);
-  font-size: var(--tamanho-texto-btn);
-  transition:
-    transform 0.1s ease-in-out,
-    box-shadow 0.1s ease-in-out,
-    background-color 0.1s ease-in-out;
-}
-
-.btn1:hover {
-  transform: translateY(-4px);
-  background-color: color-mix(var(--laranja) 100%, var(--vinho) 10%);
-}
-
-.btn1:active {
-  box-shadow: 0 5px 0 color-mix(var(--laranja) 25%, #000 25%);
-}
-
-.btn2 {
-  height: 40px;
-  border: none;
-  padding: 10px;
-  display: flex;
-  font-weight: 500;
-  text-align: center;
-  align-items: center;
   border-radius: 10px;
-  text-decoration: none;
-  color: var(--laranja);
-  justify-content: center;
-  background-color: var(--vinho);
-  font-size: var(--tamanho-texto-btn);
-  transition:
-    transform 0.1s ease-in-out,
-    box-shadow 0.1s ease-in-out,
-    background-color 0.1s ease-in-out;
 }
 
-.btn2:hover {
-  transform: translateY(-4px);
-  background-color: color-mix(var(--vinho) 100%, var(--laranja) 10%);
+.btn1:hover,
+.btn3:hover,
+.select:hover {
+  background-color: color-mix(in srgb, var(--laranja) 100%, var(--vinho) 10%);
 }
 
-.btn2:active {
-  box-shadow: 0 5px 0 color-mix(var(--vinho) 25%, #000 25%);
+.btn1:active,
+.btn3:active,
+.select:active {
+  box-shadow: 0 5px 0 color-mix(in srgb, var(--laranja) 25%, #000 25%);
 }
 
 .btn3 {
   width: 50%;
-  height: 40px;
-  border: none;
-  padding: 10px;
-  display: flex;
-  font-weight: 500;
-  text-align: center;
   align-self: center;
-  align-items: center;
-  border-radius: 10px;
-  text-decoration: none;
-  justify-content: center;
-  color: var(--vinho);
-  background-color: var(--laranja);
-  font-size: var(--tamanho-texto-btn);
-  transition:
-    transform 0.1s ease-in-out,
-    box-shadow 0.1s ease-in-out,
-    background-color 0.1s ease-in-out;
 }
 
-.btn3:hover {
-  transform: translateY(-4px);
-  background-color: color-mix(var(--laranja) 100%, var(--vinho) 10%);
-}
-
-.btn3:active {
-  box-shadow: 0 5px 0 color-mix(var(--laranja) 25%, #000 25%);
-}
-
-.link {
-  cursor: pointer;
-  font-weight: 500;
-  color: var(--vinho);
-  font-size: var(--tamanho-texto-navbar);
-  transition:
-    color 0.1s ease-in-out,
-    transform 0.1s ease-in-out;
-}
-
-.link:hover {
+/* Variações de Botão: Vinho (btn2) */
+.btn2 {
   color: var(--laranja);
-  transform: translateY(-2px);
+  background-color: var(--vinho);
+  border-radius: 10px;
 }
 
+.btn2:hover {
+  background-color: color-mix(in srgb, var(--vinho) 100%, var(--laranja) 10%);
+}
+
+.btn2:active {
+  box-shadow: 0 5px 0 color-mix(in srgb, var(--vinho) 25%, #000 25%);
+}
+
+/* Ícones e Logos */
 .icon {
   width: 25px;
   cursor: pointer;
@@ -177,34 +182,67 @@ html[data-scroll-behavior="smooth"] {
   scale: 1.1;
 }
 
+.logo {
+  height: 40%;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+/* ==========================================================================
+   5. COMPONENTES: NAVEGAÇÃO E LINKS
+   ========================================================================== */
+.navbar {
+  display: flex;
+  gap: 10px;
+}
+
+.link,
+.link2 {
+  font-weight: 500;
+  transition:
+    color 0.1s ease-in-out,
+    transform 0.1s ease-in-out,
+    background-color 0.1s ease-in-out;
+}
+
+.link {
+  color: var(--vinho);
+  font-size: var(--tamanho-texto-navbar);
+  cursor: pointer;
+}
+
+.link:hover {
+  color: color-mix(in srgb, var(--laranja), var(--vinho));
+}
+
+.link2 {
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: var(--fundo-claro);
+  background-color: var(--vinho);
+}
+
+.link2:hover {
+  background-color: color-mix(in srgb, var(--laranja), var(--vinho));
+}
+
+/* ==========================================================================
+   6. COMPONENTES: FORMULÁRIOS
+   ========================================================================== */
 .form {
-  gap: 30px;
-  width: 80%;
   display: flex;
   flex-direction: column;
+  gap: 30px;
+  width: 80%;
 }
 
-.input {
-  padding: 15px;
-  min-height: 50px;
-  max-height: 200px;
-  font-size: var(--tamanho-texto-input);
-  border-style: none;
-  border-radius: 10px;
-  outline: transparent;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.25);
-  transition:
-    outline 0.1s ease-in-out,
-    box-shadow 0.1s ease-in-out;
-}
-
-.input:hover {
-  box-shadow: 0px 5px 20px -5px rgba(0, 0, 0, 0.25);
-}
-
-.input:focus {
-  outline: 2px solid var(--laranja);
+.input_campo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .label {
@@ -212,12 +250,50 @@ html[data-scroll-behavior="smooth"] {
   transition: color 0.1s ease-in-out;
 }
 
+.input_campo:focus-within .label {
+  color: var(--laranja);
+}
+
+/* Inputs de Texto e Textarea Agrupados */
+.input,
+.textarea {
+  padding: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  outline: transparent;
+  font-size: var(--tamanho-texto-input);
+  box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.25);
+  transition:
+    outline 0.1s ease-in-out,
+    box-shadow 0.1s ease-in-out;
+}
+
+.input {
+  height: 50px;
+}
+
+.textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.input:hover,
+.textarea:hover {
+  box-shadow: 0px 5px 20px -5px rgba(0, 0, 0, 0.25);
+}
+
+.input:focus,
+.textarea:focus {
+  outline: 2px solid var(--laranja);
+}
+
+/* Links internos de formulário (ex: Esqueci a senha) */
 .a_input {
   display: flex;
-  font-weight: 500;
-  color: var(--vinho);
-  text-decoration: none;
   justify-content: flex-end;
+  color: var(--vinho);
+  font-weight: 500;
+  text-decoration: none;
   transition: color 0.1s ease-in-out;
 }
 
@@ -225,96 +301,130 @@ html[data-scroll-behavior="smooth"] {
   color: color-mix(in srgb, var(--vinho) 100%, var(--laranja) 100%);
 }
 
-.input_campo {
-  gap: 5px;
-  display: flex;
-  flex-direction: column;
-}
-
-.input_campo:focus-within .label {
-  color: var(--laranja);
-}
-
+/* Input File */
 .input_file {
   height: 40px;
   font-size: var(--tamanho-texto-input);
-  border-style: none;
-  border-radius: 10px;
   outline: transparent;
   transition: outline 0.1s ease-in-out;
 }
 
 .input_file::file-selector-button {
   height: 40px;
-  border: none;
   padding: 10px;
-  font-weight: 500;
-  color: var(--vinho);
-  align-items: center;
+  border: 0;
   border-radius: 10px;
-  text-decoration: none;
-  justify-content: center;
+  color: var(--vinho);
   background-color: var(--laranja);
+  font-family: var(--font-fredoka);
   font-size: var(--tamanho-texto-btn);
+  font-weight: 500;
   transition: background-color 0.1s ease-in-out;
 }
 
 .input_file::file-selector-button:hover {
-  background-color: color-mix(var(--laranja) 100%, var(--vinho) 10%);
+  background-color: color-mix(in srgb, var(--laranja) 100%, var(--vinho) 10%);
 }
 
-.checkbox {
-  gap: 10px;
+/* Select Customizado (API Moderna) */
+.select {
+  justify-content: space-evenly;
+  appearance: base-select;
+  outline: transparent;
+}
+
+.select::picker-icon {
+  margin: 0;
+}
+
+.select::picker(select) {
+  appearance: base-select;
+  margin-top: 10px;
   padding: 10px;
+  border: 0;
+  border-radius: 10px;
+  color: var(--vinho);
+  background-color: var(--laranja);
+}
+
+/* Checkbox */
+.checkbox {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-}
-
-.select {
-  border: 0;
-  width: 75%;
-  padding: 4px;
-  border-radius: 10px;
-  outline: transparent;
-  transition: outline 0.1s ease-in-out;
+  gap: 10px;
+  padding: 10px;
 }
 
 .checkbox_label {
   margin-left: 8px;
 }
 
-.card {
+/* ==========================================================================
+   7. COMPONENTES: CARDS E SEPARADORES
+   ========================================================================== */
+.card,
+.infocard {
+  display: flex;
+  flex-direction: column;
   gap: 20px;
   width: 80%;
-  display: flex;
+}
+
+.card {
   align-items: center;
-  flex-direction: column;
+}
+
+/* Linhas Separadoras */
+.line,
+.line2 {
+  width: 100%;
+  height: 1px;
+  border: 0;
+  border-radius: 1px;
+}
+
+.line {
+  background-color: var(--fundo-escuro);
+}
+
+.line2 {
+  background-color: var(--laranja);
+}
+
+/* ==========================================================================
+   8. TIPOGRAFIA (TÍTULOS E TEXTOS)
+   ========================================================================== */
+.title1,
+.title2,
+.title3,
+.title4,
+.subtitle {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.title1,
+.title2 {
+  font-weight: 600;
+  color: var(--laranja);
+  text-transform: uppercase;
 }
 
 .title1 {
-  display: flex;
-  font-weight: 600;
-  color: var(--laranja);
-  justify-content: center;
-  text-transform: uppercase;
   font-size: var(--tamanho-titulo);
 }
 
 .title2 {
-  display: flex;
-  font-weight: 600;
-  color: var(--laranja);
-  justify-content: center;
-  text-transform: uppercase;
   font-size: var(--tamanho-titulo-card);
+  justify-self: flex-start;
 }
 
 .title3 {
   width: 100%;
-  display: flex;
   padding: 10px 0;
-  justify-content: center;
   color: var(--fonte-clara);
   background-color: var(--vinho);
   font-size: var(--tamanho-titulo-card);
@@ -322,27 +432,92 @@ html[data-scroll-behavior="smooth"] {
 
 .title4 {
   width: 100%;
-  display: flex;
   font-weight: 600;
+  color: var(--fonte-clara);
+  font-size: var(--tamanho-sub-titulo-card);
   white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
-  justify-content: center;
+}
+
+.subtitle {
+  font-weight: 400;
   color: var(--fonte-clara);
   font-size: var(--tamanho-sub-titulo-card);
 }
 
-.subtitle {
-  display: flex;
+.text,
+.text2 {
+  text-align: center;
   font-weight: 400;
+}
+
+.text2 {
+  color: var(--laranja);
+}
+
+/* ==========================================================================
+   9. CLASSES UTILITÁRIAS
+   ========================================================================== */
+.full_width {
+  width: 100%;
+}
+
+.center {
   justify-content: center;
-  color: var(--fonte-clara);
-  font-size: var(--tamanho-sub-titulo-card);
+}
+
+.side_by_side {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bg_vinho {
+  background-color: var(--vinho);
+}
+
+.bg_laranja {
+  background-color: var(--laranja);
 }
 
 .min_height {
   min-height: 65vh;
+  padding: 40px;
 }
 
 .less_bottom_margin {
   margin-bottom: -30px;
+}
+
+/* ==========================================================================
+   10. ESTILIZAÇÃO DE TERCEIROS (TOASTIFY)
+   ========================================================================== */
+.Toastify__toast--success {
+  font-weight: bold;
+  color: var(--laranja) !important;
+  background-color: #fff !important;
+}
+
+.Toastify__progress-bar--success {
+  background: var(--laranja) !important;
+}
+
+.Toastify__toast--success .Toastify__toast-icon svg {
+  fill: var(--laranja) !important;
+}
+
+/* ==========================================================================
+   11. RESPONSIVIDADE (MEDIA QUERIES)
+   ========================================================================== */
+@media (width <= 768px) {
+  .to_column {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .to_reverse_column {
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
 }
